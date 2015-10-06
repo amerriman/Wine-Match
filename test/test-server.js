@@ -19,9 +19,20 @@ describe('Users', function(){
         password: "test",
         wines:[
           {
-            name: "Benmarco Cabernet Sauvignon",
+            wineName: "Benmarco Cabernet Sauvignon",
             image: "http://ei.isnooth.com/multimedia/d/4/a/image_990323_square.jpeg",
             varietal: "Cabernet Sauvignon",
+            vintage: 2009,
+            code: "benmarco-cabernet-sauvignon-2008-9",
+            notes: "A lot of Cabernet at this price.",
+            score: 93,
+            recipes: [
+              {
+              name: "Spinach & Herb Risotto",
+              sourceLink: "http://www.finecooking.com/recipes/spinach_herb_risotto.aspx",
+              image: "http://ei.isnooth.com/multimedia/c/2/6/image_46377.jpeg"
+              }
+            ]
           }
         ]
       });
@@ -54,9 +65,20 @@ describe('Users', function(){
       password: "test",
       wines:[
         {
-          name: "Barefoot",
-          image: "http://www.manchester-hotels.org.uk/wp-content/uploads/2013/08/Barefoot_Wine_logo.jpg",
-          varietal: "Merlot",
+          wineName: "Buried Cane Cabernet Sauvignon",
+          image: "http://ei.isnooth.com/multimedia/1/a/0/image_3790112_square.jpeg",
+          varietal: "Cabernet Sauvignon",
+          vintage: 2013,
+          code: "benmarco-cabernet-sauvignon-2008-9",
+          notes: "Decent party wine.",
+          score: 77,
+          recipes: [
+              {
+              name: "Herb-Crusted Rack of Lamb",
+              sourceLink: "http://www.finecooking.com/recipes/herb-crusted-rack-of-lamb.aspx",
+              image: "http://ei.isnooth.com/multimedia/3/e/4/image_48631.jpeg"
+              }
+            ]
         }
       ]
     });
