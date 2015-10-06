@@ -14,7 +14,7 @@ describe('Users', function(){
   User.collection.drop();
 
     beforeEach(function(done){
-      var newUser = new User({
+      var testUser = new User({
         name: "Ashley",
         password: "test",
         wines:[
@@ -28,15 +28,15 @@ describe('Users', function(){
             score: 93,
             recipes: [
               {
-              name: "Spinach & Herb Risotto",
+              title: "Spinach & Herb Risotto",
               sourceLink: "http://www.finecooking.com/recipes/spinach_herb_risotto.aspx",
-              image: "http://ei.isnooth.com/multimedia/c/2/6/image_46377.jpeg"
+              foodImage: "http://ei.isnooth.com/multimedia/c/2/6/image_46377.jpeg"
               }
             ]
           }
         ]
       });
-      newUser.save(function(err) {
+      testUser.save(function(err) {
         done();
       });
     });
@@ -53,6 +53,7 @@ describe('Users', function(){
     .end(function(err, res){
       res.should.have.status(200);
       res.should.be.json;
+      // console.log(res.body[0].wines[0].recipes, 'GET ALL');
       done();
     });
   });
@@ -74,9 +75,9 @@ describe('Users', function(){
           score: 77,
           recipes: [
               {
-              name: "Herb-Crusted Rack of Lamb",
+              title: "Herb-Crusted Rack of Lamb",
               sourceLink: "http://www.finecooking.com/recipes/herb-crusted-rack-of-lamb.aspx",
-              image: "http://ei.isnooth.com/multimedia/3/e/4/image_48631.jpeg"
+              foodImage: "http://ei.isnooth.com/multimedia/3/e/4/image_48631.jpeg"
               }
             ]
         }
@@ -88,6 +89,7 @@ describe('Users', function(){
       .end(function(err, res){
         res.should.have.status(200);
         res.should.be.json;
+        // console.log(res.body, 'GET ONE');
         done();
       });
     });
@@ -98,29 +100,73 @@ describe('Users', function(){
   it('should add a SINGLE user on api/users POST', function(done){
     chai.request(server)
     .post('/api/users')
-    .send({'name': "Mark", 'password': "test", 'wines':[]})
+    .send({'name': "Mark",
+          'password': "test",
+          'wines':[
+            {
+            'wineName': "Buried Cane Cabernet Sauvignon",
+            'image': "http://ei.isnooth.com/multimedia/1/a/0/image_3790112_square.jpeg",
+            'varietal': "Cabernet Sauvignon",
+            'vintage': 2013,
+            'code': "benmarco-cabernet-sauvignon-2008-9",
+            'notes': "Decent party wine.",
+            'score': 77,
+            'recipes': [
+                {
+                'title': "Herb-Crusted Rack of Lamb",
+                'sourceLink': "http://www.finecooking.com/recipes/herb-crusted-rack-of-lamb.aspx",
+                'foodImage': "http://ei.isnooth.com/multimedia/3/e/4/image_48631.jpeg"
+                }
+              ]
+            }
+          ]
+      })
     .end(function(err, res){
       res.should.have.status(200);
       res.should.be.json;
+      // console.log(res.body.SUCCESS, 'POST ONE');
+      res.body.should.be.a('object');
+      res.body.should.have.property('SUCCESS');
+      res.body.SUCCESS.should.be.a('object');
+      res.body.SUCCESS.should.have.property('name');
+      res.body.SUCCESS.should.have.property('wines');
+      res.body.SUCCESS.should.have.property('_id');
+      res.body.SUCCESS.name.should.equal('Mark');
+      res.body.SUCCESS.wines.should.be.a('array');
+      res.body.SUCCESS.wines[0].should.have.property('image');
+      res.body.SUCCESS.wines[0].should.be.a('object');
+      res.body.SUCCESS.wines[0].should.have.property('vintage');
+      res.body.SUCCESS.wines[0].vintage.should.equal(2013);
+      res.body.SUCCESS.wines[0].recipes[0].should.be.a('object');
+      res.body.SUCCESS.wines[0].recipes[0].should.have.property('title');
+      res.body.SUCCESS.wines[0].recipes[0].title.should.equal('Herb-Crusted Rack of Lamb');
       done();
     });
   });
 
-//update one on PUT
+//update one on PUT (not really working on a deep level)
   it('should update a SINGLE user on /user/<id> PUT', function(done){
     chai.request(server)
     .get('/api/users')
     .end(function(err, res){
       chai.request(server)
       .put('/api/user/' + res.body[0]._id)
-      .send({'name': 'Fancy'})
+      .send({'name': 'Kevin'})
       .end(function(error, response){
         response.should.have.status(200);
         response.should.be.json;
+        console.log(response.body, "PUT");
+        response.body.should.be.a('object');
+        response.body.should.have.property('UPDATED');
+        response.body.UPDATED.should.be.a('object');
+        response.body.UPDATED.should.have.property('name');
+        response.body.UPDATED.should.have.property('_id');
+        response.body.UPDATED.name.should.equal('Kevin');
         done();
       });
     });
   });
+
 
   it('should delete a SINGLE user on /api/user/<id> DELETE', function(done) {
   chai.request(server)

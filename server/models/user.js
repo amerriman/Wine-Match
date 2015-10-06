@@ -16,9 +16,9 @@ var User = new Schema (
         score: Number,
         recipes: [
           {
-            name: String,
+            title: String,
             sourceLink: String,
-            image: String
+            foodImage: String
           }
         ]
       }

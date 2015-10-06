@@ -28,28 +28,26 @@ router.get('/user/:id', function(req, res, next){
 
 
 //POST one
-// router.post('/users', function(req, res, next){
-//   var query = {name: req.body.name};
-//   var options = {upsert: true, new: true};
-//   var update = {
-//     name: req.body.name,
-//     password: req.body.password,
-//     $push: {wines:{name: req.body.name, image: req.body.image, varietal: req.body.varietal}}};
-//     User.findOneAndUpdate(query, update, options, function(err, data){
-//       if(err){
-//         res.json({'message': err});
-//       } else {
-//         res.json({"SUCCESS": data});
-//       }
-//     });
-//   });
-
-
 router.post('/users', function(req, res, next){
+  // console.log(req.body.wines[0].wineName, "HERE");
+  // console.log(req.body.wines[0].recipes[0], "HERE");
   var newUser = new User ({
     name: req.body.name,
     password: req.body.password,
-    $push: {wines:{wineName: req.body.wineName, image: req.body.image, varietal: req.body.varietal}}
+      wines:{
+        wineName: req.body.wines[0].wineName,
+        image: req.body.wines[0].image,
+        varietal: req.body.wines[0].varietal,
+        vintage: req.body.wines[0].vintage,
+        code: req.body.wines[0].code,
+        notes: req.body.wines[0].notes,
+        score: req.body.wines[0].score,
+        recipes:{
+          title: req.body.wines[0].recipes[0].title,
+          sourceLink: req.body.wines[0].recipes[0].sourceLink,
+          foodImage: req.body.wines[0].recipes[0].foodImage
+        }
+      }
   });
   newUser.save(function(err, data){
     if(err){
@@ -61,16 +59,33 @@ router.post('/users', function(req, res, next){
 });
 
 
-
 //update ONE user
 router.put('/user/:id', function(req, res, next){
+  var query = {"_id": req.params.id};
   var update = {
     name: req.body.name,
     password: req.body.description,
-    $push: {wines:{wineName: req.body.name, image: req.body.image, varietal: req.body.varietal}}
-    };
+    $push: {
+      wines:{
+        wineName: req.body.wineName,
+        image: req.body.image,
+        varietal: req.body.varietal,
+        vintage: req.body.vintage,
+        code: req.body.code,
+        notes: req.body.notes,
+        score: req.body.score,
+        $push: {
+          recipes:{
+            title: req.body.title,
+            sourceLink: req.body.sourceLink,
+            foodImage: req.body.foodImage
+          }
+        }
+      }
+    }
+  };
   var options = {new: true};
-  User.findOneAndUpdate(req.params.id, update, options, function(err, data){
+  User.findOneAndUpdate(query, update, options, function(err, data){
     if(err){
       res.json({'message': err});
     } else {
@@ -90,6 +105,12 @@ router.delete('/user/:id', function(req, res, next){
     }
   });
 });
+
+
+//helper function
+function createOptions(inputFields){
+
+}
 
 
 module.exports = router;
