@@ -84,9 +84,37 @@ describe('Users', function(){
     });
   });
 
+//update one on PUT
+  it('should update a SINGLE user on /user/<id> PUT', function(done){
+    chai.request(server)
+    .get('/api/users')
+    .end(function(err, res){
+      chai.request(server)
+      .put('/api/user/' + res.body[0]._id)
+      .send({'name': 'Fancy'})
+      .end(function(error, response){
+        response.should.have.status(200);
+        response.should.be.json;
+        done();
+      });
+    });
+  });
 
-  it('should update a SINGLE user on /user/<id> PUT');
-  it('should delete a SINGLE user on /user/<id> DELETE');
+  it('should delete a SINGLE user on /api/user/<id> DELETE', function(done) {
+  chai.request(server)
+    .get('/api/users')
+    .end(function(err, res){
+      chai.request(server)
+        .delete('/api/user/'+res.body[0]._id)
+        .end(function(error, response){
+          response.should.have.status(200);
+          response.should.be.json;
+          // console.log(response.body);
+          done();
+      });
+    });
+  });
+
 });
 
 
