@@ -55,7 +55,7 @@ app.use(express.static(path.join(__dirname, '../client')));
 app.use('/api/', apiRoutes);
 //NEW MAIN ROUTE
 app.use('/', function (req,res) {
-  res.sendFile(path.join(__dirname, '../client/views', 'index.html'));
+  res.sendFile(path.join(__dirname, '../client/views/', 'index.html'));
 });
 
 

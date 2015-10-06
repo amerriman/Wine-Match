@@ -6,3 +6,19 @@ body {
 a {
   color: #00B7FF;
 }
+
+.center {
+  text-align: center;
+}
+
+.choices {
+  height: 150px;
+  width: 150px;
+  margin-left: 5px;
+
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
