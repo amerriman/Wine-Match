@@ -149,6 +149,7 @@ describe('Users', function(){
     chai.request(server)
     .get('/api/users')
     .end(function(err, res){
+      console.log(res.body, "PREPUT")
       chai.request(server)
       .put('/api/user/' + res.body[0]._id)
       .send({'name': 'Kevin'})
