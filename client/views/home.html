@@ -15,20 +15,18 @@
     <option value="pasta">Pasta</option>
   </select>
   <br>
+  <!-- <a href="/#/results"> -->
   <button type="submit" ng-click="getOption()" class="btn btn-success">Get the wine!</button>
+  <!-- </a> -->
 </div>
 
-
-<div class="row" ng-show="wineA">
-  <div class="col col-md-10 col-md-offset-1 centered">
-    <!-- <h3>Results</h3> -->
-    <div ng-repeat="wine in winesA" class="blocks">
-      <div class="outline1">
-      <br>
-        <h4><a ng-click="" title="">{{wine.name}}</a></h4>
-        <h5>Price: {{wine.price}}</h5>
-      </div>
-      <br>
+<!-- Show all wine results -->
+<div >
+  <div ng-repeat="wine in wines">
+    <div ng-repeat="w in wine">
+      <h5><a ng-click="wineDetails" title="">{{w.name}}</a></h5>
+      <h6>Price: {{w.price}}</h6>
     </div>
+    <br>
   </div>
 </div>

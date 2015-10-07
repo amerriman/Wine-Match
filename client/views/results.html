@@ -1,3 +1,11 @@
-<p>RESULTS</p>
 
 
+<div >
+  <div ng-repeat="wine in wines">
+    <div ng-repeat="w in wine">
+      <h5><a ng-click="wineDetails" title="">{{w.name}}</a></h5>
+      <h6>Price: {{w.price}}</h6>
+    </div>
+    <br>
+  </div>
+</div>
