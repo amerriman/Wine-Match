@@ -51,7 +51,6 @@ app.use(express.static(path.join(__dirname, '../client')));
 
 
 // *** main routes *** //
-// app.use('/', routes);
 app.use('/api/', apiRoutes);
 //NEW MAIN ROUTE
 app.use('/', function (req,res) {

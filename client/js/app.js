@@ -6,7 +6,7 @@ app.config(function($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: '../views/home.html',
-      controller: 'allWineController'
+      controller: 'searchController'
     })
     .when('/results', {
       templateUrl: '../views/results.html',

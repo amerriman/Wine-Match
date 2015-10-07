@@ -9,6 +9,7 @@ a {
 
 .center {
   text-align: center;
+
 }
 
 .choices {
@@ -22,3 +23,9 @@ a {
   display: flex;
   justify-content: center;
 }
+/*
+.selector {
+  max-width: 250px;
+  text-align: center;
+  margin-left: 39%
+}*/
