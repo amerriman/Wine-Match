@@ -14,6 +14,7 @@ var mongoose = require('mongoose');
 var apiRoutes = require('./routes/api.js');
 
 
+
 // *** express instance *** //
 var app = express();
 
@@ -38,8 +39,6 @@ console.log('Connected to Database: ' + config.mongoURI[app.settings.env]);
 // app.set('view engine', 'html');
 
 
-// *** static directory *** //
-app.set('views', path.join(__dirname, 'views'));
 
 
 // *** config middleware *** //
@@ -47,11 +46,18 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+
+// *** static directory *** //
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, '../client')));
 
 
 // *** main routes *** //
 app.use('/api/', apiRoutes);
+
+
+
 //NEW MAIN ROUTE
 app.use('/', function (req,res) {
   res.sendFile(path.join(__dirname, '../client/views/', 'index.html'));

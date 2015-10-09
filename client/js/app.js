@@ -10,7 +10,7 @@ app.config(function($routeProvider) {
     })
     .when('/results', {
       templateUrl: '../views/results.html',
-      controller: 'searchController'
+      controller: 'allWineController'
     })
     .when('/wine', {
       templateUrl: '../views/wine.html',

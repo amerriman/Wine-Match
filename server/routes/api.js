@@ -26,7 +26,7 @@ router.get('/user/:id', function(req, res, next){
   });
 });
 
-
+//may need to make this like the flash cards - look for it and if it exists just update the wines, otherwise make a new one
 //POST one
 router.post('/users', function(req, res, next){
   // console.log(req.body.wines[0].wineName, "HERE");
@@ -35,18 +35,15 @@ router.post('/users', function(req, res, next){
     name: req.body.name,
     password: req.body.password,
       wines:{
-        wineName: req.body.wines[0].wineName,
-        image: req.body.wines[0].image,
-        varietal: req.body.wines[0].varietal,
-        vintage: req.body.wines[0].vintage,
-        code: req.body.wines[0].code,
-        notes: req.body.wines[0].notes,
-        score: req.body.wines[0].score,
-        recipes:{
-          title: req.body.wines[0].recipes[0].title,
-          sourceLink: req.body.wines[0].recipes[0].sourceLink,
-          foodImage: req.body.wines[0].recipes[0].foodImage
-        }
+        wineName: req.body.wineName,
+        image: req.body.image,
+        varietal: req.body.varietal,
+        vintage: req.body.vintage,
+        code: req.body.code,
+        notes: req.body.notes,
+        score: req.body.score,
+        recipes: req.body.recipes
+
       }
   });
   newUser.save(function(err, data){

@@ -1,11 +1,68 @@
-
-
-<div >
-  <div ng-repeat="wine in wines">
-    <div ng-repeat="w in wine">
-      <h5><a ng-click="wineDetails" title="">{{w.name}}</a></h5>
-      <h6>Price: {{w.price}}</h6>
-    </div>
-    <br>
-  </div>
+<!-- Show all wine results -->
+<div ng-show="results">
+  <h3>Wine that goes with: {{meal}}</h3>
+    <ul ng-repeat="wine in wines">
+      <li class="outline">
+        <div class="thumbnails">
+          <h4>{{wine.name}}</h4>
+          <img ng-src="{{wine.image}}" alt="Someone must have been drunk when they were supposed to be uploading this data..." height="100px" width="auto">
+          <div>
+            <p>Winery: {{wine.winery}}</p>
+            <p>Vintage: {{wine.vintage}}</p>
+            <p>Varietal: {{wine.varietal}}</p>
+            <p>Rating: {{wine.snoothrank}}/5</p>
+            <a href="" ng-click="wineDetails(wine.code)" class="btn btn-warning">More Info</a>
+          </div>
+        </div>
+      </li>
+    </ul>
 </div>
+
+
+<!-- Show single wine more info -->
+
+<div ng-show="single">
+
+
+<div class="col col-md-8 col-md-offset-2 centeredtest outlinetest">
+      <!-- <div class="" -->
+        <h2>{{singleWine.name}}</h2>
+        <div class="col col-md-5 left">
+          <img ng-src="{{singleWine.image}}" alt="Wine Image" width="auto" height="100%">
+        </div>
+        <div class="col col-md-7 left">
+          <p>Winery: {{singleWine.winery}}</p>
+          <p>Winemaker notes: {{singleWine.wm_notes}}</p>
+          <p>Varietal: {{singleWine.varietal}}</p>
+          <p>Vintage: {{singleWine.vintage}}</p>
+          <p>Price: {{singleWine.price | currency}}</p>
+          <p>Rating: {{singleWine.snoothrank}}</p>
+          <p>Buy it online at: {{singleWine.link}}</p>
+
+          <button class="btn btn-info" ng-click="showRecipes()" ng-show="recBtn">Show Recipes</button>
+
+          <button class="btn btn-info" ng-click="hideRecipes()" ng-show="hideRecBtn">Hide Recipes</button>
+
+
+          <button class="btn btn-info" ng-click="postWine()">Save to my wines!</button>
+
+        </div>
+
+  </div>
+
+            <div ng-show="recipesDiv">
+            <div ng-repeat="recipe in recipes">
+              <div class="outlinetest">
+                <img ng-src="{{recipe.image}}" alt="Food Image" width="100px" height="100px">
+                <p>{{recipe.name}}</p>
+                <p>{{recipe.source_link}}</p>
+              </div>
+              <br>
+            </div>
+          </div>
+
+   <button class="btn btn-info" ng-click="goBack()">Back to all results</button>
+</div>
+
+
+

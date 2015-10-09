@@ -3,7 +3,7 @@
 
 <div class="form-group selector center">
   <!-- <label for="sel1">What are you eating?</label> -->
-  <select class="form-control" id="food-type" ng-model="mySelect" ng-init="mySelect='choose'">
+  <select class="form-control" id="food-type" ng-model="foodSelect" ng-init="foodSelect='choose'">
     <option value="choose" disabled selected>Choose a food type:</option>
     <option value="brunch">Brunch</option>
     <option value="chicken">Chicken</option>
@@ -15,13 +15,13 @@
     <option value="pasta">Pasta</option>
   </select>
   <br>
-  <!-- <a href="/#/results"> -->
+  <a href="/#/results">
   <button type="submit" ng-click="getOption()" class="btn btn-success">Get the wine!</button>
-  <!-- </a> -->
+  </a>
 </div>
 
 <!-- Show all wine results -->
-<div >
+<!-- <div >
   <div ng-repeat="wine in wines">
     <div ng-repeat="w in wine">
       <h5><a ng-click="wineDetails" title="">{{w.name}}</a></h5>
@@ -29,4 +29,4 @@
     </div>
     <br>
   </div>
-</div>
+</div> -->
