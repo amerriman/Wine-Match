@@ -5,7 +5,7 @@ var chaiHttp = require('chai-http');
 var mongoose = require('mongoose-q')(require('mongoose'));
 
 var server = require('../server/app');
-var User = require("../server/models/user");
+var WineCellar = require("../server/models/wineCellar");
 
 
 var should = chai.should();

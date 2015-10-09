@@ -1,32 +1,9 @@
-<h2 class="center">What's cooking?</h2>
-
-
-<div class="form-group selector center">
-  <!-- <label for="sel1">What are you eating?</label> -->
-  <select class="form-control" id="food-type" ng-model="foodSelect" ng-init="foodSelect='choose'">
-    <option value="choose" disabled selected>Choose a food type:</option>
-    <option value="brunch">Brunch</option>
-    <option value="chicken">Chicken</option>
-    <option value="fish">Fish</option>
-    <option value="pork">Pork</option>
-    <option value="beef">Beef</option>
-    <option value="lamb">Lamb</option>
-    <option value="veal">Veal</option>
-    <option value="pasta">Pasta</option>
-  </select>
-  <br>
-  <a href="/#/results">
-  <button type="submit" ng-click="getOption()" class="btn btn-success">Get the wine!</button>
-  </a>
+<div class="container">
+  <h1>Wine App</h1>
+  <p>DRINK ALL THE WINE</p>
 </div>
+<hr/>
 
-<!-- Show all wine results -->
-<!-- <div >
-  <div ng-repeat="wine in wines">
-    <div ng-repeat="w in wine">
-      <h5><a ng-click="wineDetails" title="">{{w.name}}</a></h5>
-      <h6>Price: {{w.price}}</h6>
-    </div>
-    <br>
-  </div>
-</div> -->
+<div ng-controller="logoutController">
+  <a ng-click='logout()' class="btn btn-default">Logout</a>
+</div>

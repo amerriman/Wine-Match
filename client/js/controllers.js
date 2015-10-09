@@ -144,7 +144,7 @@ app.controller('allWineController', ['$scope', "httpFactory", function($scope, h
       "recipes": recipes
     };
 
-    httpFactory.post('/api/users', payload)
+    httpFactory.post('/api/winecellars', payload)
     .then(function(response){
       console.log(response);
     });
