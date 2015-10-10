@@ -15,7 +15,7 @@ var passport = require('passport');
 // var routes = require('./routes/index.js');
 var apiRoutes = require('./routes/api.js');
 var user = require('./routes/userAPI.js');
-
+var social = require('./routes/socialAPI.js');
 
 
 // *** express instance *** //
@@ -24,6 +24,7 @@ var app = express();
 
 // *** config file *** //
 var config = require('./_config');
+// var ids = require('./config');
 
 
 // *** mongoose *** ///
@@ -66,6 +67,8 @@ app.use(express.static(path.join(__dirname, '../client')));
 // *** main routes *** //
 app.use('/api/', apiRoutes);
 app.use('/auth/', user);
+app.use('/social/', social);
+
 
 
 //NEW MAIN ROUTE

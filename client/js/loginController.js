@@ -11,11 +11,13 @@ app.controller('loginController',
       $scope.error = false;
       $scope.disabled = true;
 
+ console.log(AuthService.getUserStatus(), "getusrstatus on login - should be false here?");
       // call login from service
       AuthService.login($scope.loginForm.username, $scope.loginForm.password)
         // handle success
         .then(function () {
           $location.path('/');
+           console.log(AuthService.getUserStatus(), "getusrstatus on logout - should be true here?");
           //disable the button so it doesn't get clicked twice
           $scope.disabled = false;
           $scope.loginForm = {};
@@ -27,7 +29,20 @@ app.controller('loginController',
           $scope.disabled = false;
           $scope.loginForm = {};
         });
+    };
 
+
+    $scope.githubLogin = function(){
+      AuthService.githubLogin()
+        // handle success
+        .then(function () {
+          $location.path('/');
+        })
+        // handle error
+        .catch(function () {
+          $scope.error = true;
+          $scope.errorMessage = "Something went wrong";
+        });
     };
 
 }]);

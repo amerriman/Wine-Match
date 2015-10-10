@@ -1,3 +1,5 @@
+//should set a global constant that can be used with multiple factories and would be injected in where you need it.  This is not happening below...
+
 app.factory('AuthService',
   ['$q', '$timeout', '$http',
   function ($q, $timeout, $http) {
@@ -12,23 +14,29 @@ app.factory('AuthService',
       getUserStatus: getUserStatus,
       login: login,
       logout: logout,
-      register: register
+      register: register,
+      githubLogin: githubLogin
     });
 
 
 
-function isLoggedIn() {
-  if(user) {
-    return true;
-  } else {
-    return false;
-  }
-}
+// function isLoggedIn() {
+//   if(user) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
 
 
 
 function getUserStatus() {
-  return user;
+   if(user) {
+    return true;
+  } else {
+    return false;
+  }
+  // return user;
 }
 
 
@@ -60,6 +68,36 @@ function login(username, password) {
   return deferred.promise;
 
 }
+
+
+function githubLogin(username, password) {
+
+  // create a new instance of deferred
+  var deferred = $q.defer();
+
+  // send a post request to the server
+  $http.get('/social/github')
+    // handle success
+    .success(function (data, status) {
+      if(status === 200 && data.status){
+        user = true;
+        deferred.resolve();
+      } else {
+        user = false;
+        deferred.reject();
+      }
+    })
+    // handle error
+    .error(function (data) {
+      user = false;
+      deferred.reject();
+    });
+
+  // return promise object
+  return deferred.promise;
+
+}
+
 
 function logout() {
 
@@ -110,6 +148,7 @@ function register(username, password) {
   return deferred.promise;
 
 }
+
 
 
 }]);

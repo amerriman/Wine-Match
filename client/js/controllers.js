@@ -23,13 +23,6 @@ app.controller('searchController', ['$scope', "httpFactory", function($scope, ht
   };
 
 
-//Use this function only if want to grab the value as it's chosen - before the button click.  will need to declare foodChoice as a variable - if it's in the servce then it can be shared across controllers....
-//   $scope.showSelectValue = function(mySelect) {
-//     console.log(mySelect, "mySelect");
-//     foodChoice = mySelect;
-//     console.log(foodChoice, "foodChoice");
-// };
-
 }]);
 
 
@@ -97,6 +90,7 @@ app.controller('allWineController', ['$scope', "httpFactory", function($scope, h
     });
   };
 
+
   $scope.goBack = function(){
     $scope.single = false;
     $scope.results = true;
@@ -105,11 +99,13 @@ app.controller('allWineController', ['$scope', "httpFactory", function($scope, h
     $scope.recBtn = true;
   };
 
+
   $scope.showRecipes = function(){
     $scope.recBtn = false;
     $scope.hideRecBtn = true;
     $scope.recipesDiv = true;
   };
+
 
    $scope.hideRecipes = function(){
     $scope.recipesDiv = false;
@@ -127,13 +123,11 @@ app.controller('allWineController', ['$scope', "httpFactory", function($scope, h
         title: $scope.recipes[i].name,
         soureLink: $scope.recipes[i].source_link,
         foodImage: $scope.recipes[i].image
-      }
-      );
+      });
     }
-
     console.log(recipes);
-
     var payload = {
+      "username": $scope.currentUser,
       "wineName": $scope.singleWine.name,
       "image": $scope.singleWine.image,
       "varietal": $scope.singleWine.varietal,
@@ -143,13 +137,11 @@ app.controller('allWineController', ['$scope', "httpFactory", function($scope, h
       "score": $scope.singleWine.snoothrank,
       "recipes": recipes
     };
-
-    httpFactory.post('/api/winecellars', payload)
+    httpFactory.post('/api/users', payload)
     .then(function(response){
       console.log(response);
     });
   };
-
 
 
 

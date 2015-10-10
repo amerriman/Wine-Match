@@ -4,8 +4,7 @@ var app = angular.module('myApp', ['ngRoute']);
 app.config(function($routeProvider) {
 
   $routeProvider
-  //this needs to be reconciled with search maybe
-    .when('/', {
+  .when('/', {
       templateUrl: 'views/home.html',
       controller: 'myController',
       access: {restricted: false}
@@ -23,14 +22,6 @@ app.config(function($routeProvider) {
       templateUrl: 'views/register.html',
       controller: 'registerController',
       access: {restricted: false}
-    })
-    .when('/one', {
-      template: '<h1>This is page one!</h1>',
-      access: {restricted: true}
-    })
-    .when('/two', {
-      template: '<h1>This is page two!</h1>',
-      access: {restricted: true}
     })
     .when('/search', {
       templateUrl: '../views/search.html',
@@ -62,6 +53,45 @@ app.run(function ($rootScope, $location, $route, AuthService) {
     }
   });
 });
+
+
+   // .when('/', {
+   //    templateUrl: 'views/home.html',
+   //    controller: 'myController',
+   //    access: {restricted: false}
+   //  })
+   //  .when('/login', {
+   //    templateUrl: 'views/login.html',
+   //    controller: 'loginController',
+   //    access: {restricted: false}
+   //  })
+   //  .when('/logout', {
+   //    controller: 'logoutController',
+   //    access: {restricted: true}
+   //  })
+   //  .when('/register', {
+   //    templateUrl: 'views/register.html',
+   //    controller: 'registerController',
+   //    access: {restricted: false}
+   //  })
+   //  .when('/search', {
+   //    templateUrl: '../views/search.html',
+   //    controller: 'searchController',
+   //    access: {restricted: false}
+   //  })
+   //  .when('/results', {
+   //    templateUrl: '../views/results.html',
+   //    controller: 'allWineController',
+   //    access: {restricted: false}
+   //  })
+   //  .when('/wine', {
+   //    templateUrl: '../views/wine.html',
+   //    controller: 'WineController',
+   //    access: {restricted: false}
+   //  })
+   //  .otherwise( {
+   //    redirectTo: '/'
+   //  });
 
 
 
