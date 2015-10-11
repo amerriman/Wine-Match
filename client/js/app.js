@@ -4,12 +4,12 @@ var app = angular.module('myApp', ['ngRoute']);
 app.config(function($routeProvider) {
 
   $routeProvider
-  .when('/', {
-      templateUrl: 'views/home.html',
-      controller: 'myController',
-      access: {restricted: false}
-    })
-    .when('/login', {
+  // .when('/', {
+  //     templateUrl: 'views/home.html',
+  //     controller: 'myController',
+  //     access: {restricted: false}
+  //   })
+    .when('/', {
       templateUrl: 'views/login.html',
       controller: 'loginController',
       access: {restricted: false}
@@ -25,7 +25,7 @@ app.config(function($routeProvider) {
     })
     .when('/search', {
       templateUrl: '../views/search.html',
-      controller: 'searchController',
+      controller: 'allWineController',
       access: {restricted: false}
     })
     .when('/results', {
@@ -33,10 +33,10 @@ app.config(function($routeProvider) {
       controller: 'allWineController',
       access: {restricted: false}
     })
-    .when('/wine', {
-      templateUrl: '../views/wine.html',
-      controller: 'WineController',
-      access: {restricted: false}
+    .when('/winecellar', {
+      templateUrl: '../views/winecellar.html',
+      controller: 'userWineController',
+      access: {restricted: true}
     })
     .otherwise( {
       redirectTo: '/'

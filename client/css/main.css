@@ -4,53 +4,120 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: blue;
 }
 
-.center {
-  text-align: center;
-
-}
-
-.choices {
-  height: 150px;
-  width: 150px;
-  margin-left: 5px;
-
-}
-
-.flex-center {
-  display: flex;
-  justify-content: center;
-}
-/*
-.selector {
-  max-width: 250px;
-  text-align: center;
-  margin-left: 39%
-}*/
-.outline {
-  float: left;
-  margin-left: 30px;
-  margin-bottom: 18px;
-  width: 250px;
-  height: 330px;
-}
 
 ul {
       list-style: none;
 }
 
+.header {
+  /*background: url(../img/wine.jpg) no-repeat center center;*/
+}
+
+.centered {
+  /*border: 1px solid #ddd;*/
+  margin: 0 auto;
+  /*width: 100%;*/
+  text-align: center; /* Whatever exact width you are looking for (not bound by preset bootstrap widths) */
+}
+
+.form {
+  width: 30%;
+}
+
+.title {
+  text-align: left;
+}
+
+.main-content {
+  /*border: 1px solid #ddd;*/
+  margin: 0 auto;
+  width: 70%;
+  text-align: left;
+
+}
+
+
+
 .thumbnails {
+  /*width: 28%;
+  height: 160px;
+  padding: 5px;
+  float: left;
+  margin-left: 30px;
+  margin-bottom: 18px;
+  border: 1px solid #ddd;
   display: inline-block;
   font-family: 'Open Sans', sans-serif;
   background: white;
-  padding: 4px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-   /*width: 250px;*/
+  border-radius: 4px;*/
+
+    width: 22em;
+    height: 13em;
+    padding: .25em;
+    float: left;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    display: inline-block;
+    font-family: 'Open Sans', sans-serif;
+    background: white;
+    border-radius: 4px;
+    /* padding: 10px;
   /*padding: 10px;*/
+
+ /* width: 250px;
+  height: 330px;*/
 }
+
+.thumbnail-center {
+  /*border: 1px solid #ddd;*/
+}
+
+.thumbnail-wine-info {
+  display: inline-block;
+  float: right;
+  /*border: 1px solid #ddd;*/
+  /*height:125px;*/
+  width: 60%;
+  word-wrap: break-word;
+}
+
+/*.thumbnail-wine-pic {
+  display: inline-block;
+  border: 1px solid #ddd;
+  height: 80%;
+}*/
+
+.more-info {
+  margin-left: 3em;
+}
+
+.delete {
+  margin-top: .5em;
+  margin-left: 3.7em;
+}
+
+.thumbnail-wine-pic {
+  display: inline-block;
+  border: 1px solid #ddd;
+  height: 100%;
+
+}
+
+
+/*.thumb-p {
+  max-width: 100px;
+  border: 1px solid #ddd;
+}*/
+
+.thumbnail-wine-title {
+  /*border: 1px solid #ddd;*/
+  text-align: center;
+}
+
 
 .centeredtest {
   text-align:left;
@@ -63,28 +130,4 @@ ul {
 
 
 
-/*.outline1 {
-  border: 1px solid #C0C0C0;
-  border-radius: 10px;
-  margin: 5px;
-  width: 350px;
-  height: 200px;
-  display: inline-block;
-  padding: 5px;
-  text-align: left;
-}
 
-.outline {
-  border: 1px solid #C0C0C0;
-  border-radius: 10px;
-  margin: 5px;
-  width: 22%;
-  height: 22%;
-  display: inline-block;
-  padding: 5px;
-  text-align: left;
-}
-
-p {
-  font-size: 80%;
-}*/

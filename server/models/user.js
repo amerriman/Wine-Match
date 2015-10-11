@@ -14,6 +14,7 @@ var User = new Schema (
         varietal: String,
         vintage: Number,
         code: String,
+        price: Number,
         notes: String,
         score: Number,
         recipes: []

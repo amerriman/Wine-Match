@@ -30,10 +30,17 @@ router.post('/login', function(req, res, next) {
       if (err) {
         return res.status(500).json({err: 'Could not log in user'});
       }
-      res.status(200).json({status: 'Login successful!'});
+      //new
+      req.session.user = user;
+      res.status(200).json({
+        status: 'Login successful!',
+        user: user
+      });
     });
   })(req, res, next);
 });
+
+
 
 router.get('/logout', function(req, res) {
   req.logout();

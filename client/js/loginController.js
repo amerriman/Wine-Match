@@ -16,7 +16,7 @@ app.controller('loginController',
       AuthService.login($scope.loginForm.username, $scope.loginForm.password)
         // handle success
         .then(function () {
-          $location.path('/');
+          $location.path('/search');
            console.log(AuthService.getUserStatus(), "getusrstatus on logout - should be true here?");
           //disable the button so it doesn't get clicked twice
           $scope.disabled = false;
@@ -32,17 +32,17 @@ app.controller('loginController',
     };
 
 
-    $scope.githubLogin = function(){
-      AuthService.githubLogin()
-        // handle success
-        .then(function () {
-          $location.path('/');
-        })
-        // handle error
-        .catch(function () {
-          $scope.error = true;
-          $scope.errorMessage = "Something went wrong";
-        });
-    };
+    // $scope.githubLogin = function(){
+    //   AuthService.githubLogin()
+    //     // handle success
+    //     .then(function () {
+    //       $location.path('/search');
+    //     })
+    //     // handle error
+    //     .catch(function () {
+    //       $scope.error = true;
+    //       $scope.errorMessage = "Something went wrong";
+    //     });
+    // };
 
 }]);

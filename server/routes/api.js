@@ -15,9 +15,12 @@ router.get('/users', function(req, res, next){
 });
 
 
+//req.params.id
 //get ONE user
 router.get('/user/:id', function(req, res, next){
-  User.findById(req.params.id, function(err, data){
+  query = {username: req.user.username};
+  User.findOne(query, function(err, data){
+    console.log(query, "Query in get one");
     if(err){
       res.json({'message': err});
     } else {
@@ -30,7 +33,7 @@ router.get('/user/:id', function(req, res, next){
 //POST one
 router.post('/users', function(req, res, next){
 //How to query logged in user?
-  var query = {username: req.body.username};
+  var query = {username: req.user.username};
   var options = {upsert: true, new: true};
   var update = {
       $push: { wines:{
@@ -39,6 +42,7 @@ router.post('/users', function(req, res, next){
         varietal: req.body.varietal,
         vintage: req.body.vintage,
         code: req.body.code,
+        price: req.body.price,
         notes: req.body.notes,
         score: req.body.score,
         recipes: req.body.recipes
@@ -46,7 +50,9 @@ router.post('/users', function(req, res, next){
     }
   };
   User.findOneAndUpdate(query, update, options, function(err, data){
-   console.log(req.user, "req.user")
+   // console.log(req.user.username, "req.user.username");
+   // console.log(req.user, "req.user")
+
     if(err){
       console.log("Something's fucked up");
       res.json({'message': err});

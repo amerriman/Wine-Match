@@ -43,12 +43,31 @@ app.controller('allWineController', ['$scope', "httpFactory", function($scope, h
   $scope.wines = [];
   $scope.recipes = [];
   $scope.count = 0;
-  $scope.meal = mealType;
+  $scope.meal = "";
 
   // $scope.singleWine
 
+  $scope.foodSelect = "Choose a food type";
+  // $scope.foodSelect = httpFactory.foodSelect;
+  // console.log($scope.foodSelect, "in search controller");
+
+  //once the wines are in an array - we can iterate over them and put the match wine in a for loop with the wineType[i]
+  $scope.getOption = function(){
+    $scope.wines = [];
+    $scope.recipes = [];
+    chooseWine($scope.foodSelect);
+    $scope.meal = mealType;
+
+    matchWine('http://api.snooth.com/wines/?q=' + wineType1 + '&xp=30&n=12&mr=4&akey=dc063bj39dxhgxxop6y9rq2cymy4nqk0p1uf6ccqdhqujus7');
+
+  matchWine('http://api.snooth.com/wines/?q=' + wineType2 + '&xp=30&n=12&mr=4&akey=dc063bj39dxhgxxop6y9rq2cymy4nqk0p1uf6ccqdhqujus7');
+
+  matchWine('http://api.snooth.com/wines/?q=' + wineType3 + '&xp=30&n=12&mr=4&akey=dc063bj39dxhgxxop6y9rq2cymy4nqk0p1uf6ccqdhqujus7');
+  };
+
 
   matchWine = function(url){
+    // chooseWine($scope.foodSelect);
     if(wineType1 && wineType2 && wineType3){
     httpFactory.getAllWine(url)
     .then(function(response){
@@ -65,11 +84,11 @@ app.controller('allWineController', ['$scope', "httpFactory", function($scope, h
   };
 
 
-  matchWine('http://api.snooth.com/wines/?q=' + wineType1 + '&xp=30&n=12&mr=4&akey=dc063bj39dxhgxxop6y9rq2cymy4nqk0p1uf6ccqdhqujus7');
+  // matchWine('http://api.snooth.com/wines/?q=' + wineType1 + '&xp=30&n=12&mr=4&akey=dc063bj39dxhgxxop6y9rq2cymy4nqk0p1uf6ccqdhqujus7');
 
-  matchWine('http://api.snooth.com/wines/?q=' + wineType2 + '&xp=30&n=12&mr=4&akey=dc063bj39dxhgxxop6y9rq2cymy4nqk0p1uf6ccqdhqujus7');
+  // matchWine('http://api.snooth.com/wines/?q=' + wineType2 + '&xp=30&n=12&mr=4&akey=dc063bj39dxhgxxop6y9rq2cymy4nqk0p1uf6ccqdhqujus7');
 
-  matchWine('http://api.snooth.com/wines/?q=' + wineType3 + '&xp=30&n=12&mr=4&akey=dc063bj39dxhgxxop6y9rq2cymy4nqk0p1uf6ccqdhqujus7');
+  // matchWine('http://api.snooth.com/wines/?q=' + wineType3 + '&xp=30&n=12&mr=4&akey=dc063bj39dxhgxxop6y9rq2cymy4nqk0p1uf6ccqdhqujus7');
 
 
 
@@ -133,6 +152,7 @@ app.controller('allWineController', ['$scope', "httpFactory", function($scope, h
       "varietal": $scope.singleWine.varietal,
       "vintage": $scope.singleWine.vintage,
       "code": $scope.singleWine.code,
+      "price": $scope.singleWine.price,
       "notes": $scope.singleWine.wm_notes,
       "score": $scope.singleWine.snoothrank,
       "recipes": recipes
@@ -157,6 +177,38 @@ app.controller('allWineController', ['$scope', "httpFactory", function($scope, h
 //                          //
 //**************************//
 
-app.controller('userWineController', ['$scope', '$http', function($scope, $http){
+app.controller('userWineController', ['$rootScope', '$scope', 'httpFactory', 'AuthService', '$http', function($rootScope, $scope, httpFactory, AuthService, $http){
+
+  $scope.userWines = [];
+
+console.log($rootScope.user, "rootScope.user in userWineController");
+
+matchWine = function(url){
+    httpFactory.getAllUserWines(url)
+    .then(function(response){
+      for (var i = 0; i < response.data.wines.length; i++) {
+        $scope.userWines.push(response.data.wines[i]);
+      }
+      // $scope.userWines.push(response.data.wines)
+      console.log($scope.userWines);
+    });
+  };
+  matchWine("/api/user/" + $rootScope.user);
+
+
+// getUsers = function(url){
+//     httpFactory.getAllUsers(url)
+//     .then(function(response){
+//       console.log(response, "get all users response");
+//       // $scope.beers = response.data;
+//     });
+//   };
+//   getUsers('/api/users');
+
 
 }]);
+
+
+
+
+
