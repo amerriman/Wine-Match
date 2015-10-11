@@ -29,7 +29,7 @@ router.get('/user/:id', function(req, res, next){
   });
 });
 
-//may need to make this like the flash cards - look for it and if it exists just update the wines, otherwise make a new one
+//look for user and if it exists just update the wines, otherwise make a new one
 //POST one
 router.post('/users', function(req, res, next){
 //How to query logged in user?
@@ -62,8 +62,6 @@ router.post('/users', function(req, res, next){
     }
   });
 });
-
-
 
 
 //update ONE user
@@ -99,6 +97,38 @@ router.put('/user/:id', function(req, res, next){
     }
   });
 });
+
+
+//removes one wine (updates the user)
+router.put('/users/:name/:id', function(req, res) {
+console.log(req, 'REQ');
+  var query = {"username": req.params.name};
+  var id = req.params.id;
+  console.log(query, "Query");
+  console.log(id, 'id');
+  var options = {new: true};
+  User.findOneAndUpdate(query,
+    {$pull: {
+      "wines": {"_id": id}
+    }
+  }, options, function(err, data){
+
+    if(err){
+      console.log(err, "ERR")
+      console.log("Something's fucked up");
+      res.json({'message': err});
+    } else {
+      console.log(data, "DATA");
+      console.log("Holy shit...it WORKED!");
+      res.json({"SUCCESS": data});
+    }
+  });
+});
+
+
+
+
+
 
 
 //delete ONE user

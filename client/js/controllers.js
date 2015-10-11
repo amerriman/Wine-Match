@@ -63,11 +63,13 @@ app.controller('allWineController', ['$scope', "httpFactory", function($scope, h
   matchWine('http://api.snooth.com/wines/?q=' + wineType2 + '&xp=30&n=12&mr=4&akey=dc063bj39dxhgxxop6y9rq2cymy4nqk0p1uf6ccqdhqujus7');
 
   matchWine('http://api.snooth.com/wines/?q=' + wineType3 + '&xp=30&n=12&mr=4&akey=dc063bj39dxhgxxop6y9rq2cymy4nqk0p1uf6ccqdhqujus7');
+
   };
 
 
   matchWine = function(url){
     // chooseWine($scope.foodSelect);
+
     if(wineType1 && wineType2 && wineType3){
     httpFactory.getAllWine(url)
     .then(function(response){
@@ -178,32 +180,79 @@ app.controller('allWineController', ['$scope', "httpFactory", function($scope, h
 //**************************//
 
 app.controller('userWineController', ['$rootScope', '$scope', 'httpFactory', 'AuthService', '$http', function($rootScope, $scope, httpFactory, AuthService, $http){
-
+  $scope.results = true;
+  $scope.single = false;
+  $scope.recipesDiv = false;
+  $scope.hideRecBtn = false;
+  $scope.recBtn = true;
+  $scope.wines = [];
+  $scope.recipes = [];
   $scope.userWines = [];
 
 console.log($rootScope.user, "rootScope.user in userWineController");
 
-matchWine = function(url){
-    httpFactory.getAllUserWines(url)
+  matchWine = function(url){
+      httpFactory.getAllUserWines(url)
+      .then(function(response){
+        for (var i = 0; i < response.data.wines.length; i++) {
+          $scope.userWines.push(response.data.wines[i]);
+        }
+        // $scope.userWines.push(response.data.wines)
+        console.log($scope.userWines);
+      });
+    };
+    matchWine("/api/user/" + $rootScope.user);
+
+  $scope.wineDetails = function(code) {
+      httpFactory.getOneWine(code)
     .then(function(response){
-      for (var i = 0; i < response.data.wines.length; i++) {
-        $scope.userWines.push(response.data.wines[i]);
+      $scope.singleWine = response.data.wines[0];
+      for (var i = 0; i < response.data.wines[0].recipes.length; i++) {
+        $scope.recipes.push(response.data.wines[0].recipes[i]);
       }
-      // $scope.userWines.push(response.data.wines)
-      console.log($scope.userWines);
+      $scope.results = false;
+      $scope.single = true;
+      // console.log($scope.singleWine, "infunct");
+      // console.log(response.data.wines[0]);
+      // console.log(response.data.wines[0].recipes, "foods");
+      console.log($scope.recipes, "foods");
+
     });
   };
-  matchWine("/api/user/" + $rootScope.user);
+
+  $scope.deleteWine = function(id){
+    var wineID = id;
+    console.log(wineID, "wineID")
+    // console.log("/api/users/" + $rootScope.user + "/" + id, "request")
+    httpFactory.deleteWine("/api/users/" + $rootScope.user + "/" + wineID)
+    .then(function(response){
+      // console.log(response);
+      $scope.userWines = [];
+      matchWine("/api/user/" + $rootScope.user);
+    });
+  };
+
+  $scope.goBack = function(){
+    $scope.single = false;
+    $scope.results = true;
+    $scope.recipesDiv = false;
+    $scope.hideRecBtn = false;
+    $scope.recBtn = true;
+  };
 
 
-// getUsers = function(url){
-//     httpFactory.getAllUsers(url)
-//     .then(function(response){
-//       console.log(response, "get all users response");
-//       // $scope.beers = response.data;
-//     });
-//   };
-//   getUsers('/api/users');
+  $scope.showRecipes = function(){
+    $scope.recBtn = false;
+    $scope.hideRecBtn = true;
+    $scope.recipesDiv = true;
+  };
+
+
+   $scope.hideRecipes = function(){
+    $scope.recipesDiv = false;
+    $scope.hideRecBtn = false;
+    $scope.recBtn = true;
+  };
 
 
 }]);

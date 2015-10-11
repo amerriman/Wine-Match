@@ -23,8 +23,28 @@ app.factory('httpFactory', ['$http', function($http){
     return $http.post(url, payload);
   };
 
+  obj.deleteWine = function(url){
+  return $http.put(url);
+  };
+
   return obj;
 }]);
+
+
+// router.put('/flashcard/:name/:id', function(req, res) {
+//   var query = {"name": req.params.name};
+//   var id = req.params.id;
+//   SetOfCards.findOneAndUpdate(query, {
+//     $pull: {
+//       "cards": {"_id": id}
+//     }
+//   }, function(err, flashcard){
+//       // console.log(flashcard, "FLASHCARD DELETE??");
+//       res.json(flashcard);
+//     });
+// });
+
+
 
 
 
