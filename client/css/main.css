@@ -1,6 +1,12 @@
 body {
   padding: 5px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: url(../img/wine.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+
 }
 
 .borders {
@@ -10,7 +16,7 @@ body {
 }
 
 a {
-  color: blue;
+  /*color: burgundy;*/
 }
 
 
@@ -18,32 +24,38 @@ ul {
   list-style: none;
 }
 
-/*.background {*/
+.opening {
+  padding-left: 100px;
+}
+
+/*maybe need to attach this to the body and deal with the other properties as needed*/
+
+.background {
   /*position: absolute;*/
-/*  background: url(../img/wine.jpg) no-repeat center center scroll;
-  -webkit-background-size: cover;
+  /*background: url(../img/wine.jpg) no-repeat center center scroll;*/
+  /*-webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;*/
-/*}*/
+}
 
-.background:after {
+/*.background:after {
     content : "";
     display: block;
     position: absolute;
     top: 0;
     left: 0;
-      background: url(../img/wine.jpg) no-repeat center center scroll;
+      background: url(../img/wine.jpg) no-repeat center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-    /*background-image: url(/wp-content/uploads/2010/11/tandem.jpg);*/
+
     width: 100%;
     height: 100%;
     opacity : 0.3;
     z-index: -1;
-}
+}*/
 
 
 
@@ -51,7 +63,7 @@ ul {
   /*border: 1px solid #ddd;*/
   margin: 0 auto;
   /*width: 100%;*/
-  text-align: center; /* Whatever exact width you are looking for (not bound by preset bootstrap widths) */
+  text-align: center;
 }
 
 .selector {
@@ -111,8 +123,77 @@ ul {
   height: 330px;*/
 }
 
+.recipe-thumbnails {
+/*    width: 12em;
+    height: 12em;*/
+    padding: .25em;
+    float: left;
+    margin-left: 2.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    display: inline-block;
+    font-family: 'Open Sans', sans-serif;
+    /*these two are new*/
+    position: relative;
+    display: inline-block;
+    /*background: white;*/
+    /*border-radius: 4px;*/
+}
+
+span.text-content {
+  background: rgba(0,0,0,0.5);
+  margin-top: .3em;
+  margin-left: .3em;
+  color: white;
+  cursor: pointer;
+  display: table;
+  height: 3em;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 16em;
+  opacity: 0;
+}
+
+ul.recipe-list li:hover span.text-content {
+  opacity: 1;
+}
+
+span.text-content span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+span.text-content {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  cursor: pointer;
+  display: table;
+  height: 3em;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 16em;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+.recipe-image {
+  width: 16em;
+  height: 16em;
+}
+
 .thumbnail-container {
   margin: 0 auto;
+}
+
+.recipe-thumbnail-container {
+  margin: 0 auto;
+
 }
 
 .thumbnail-center {
@@ -128,12 +209,6 @@ ul {
   word-wrap: break-word;
 }
 
-/*.thumbnail-wine-pic {
-  display: inline-block;
-  border: 1px solid #ddd;
-  height: 80%;
-}*/
-
 .more-info {
   margin-left: 3em;
 }
@@ -147,28 +222,88 @@ ul {
   display: inline-block;
   border: 1px solid #ddd;
   height: 100%;
-
 }
 
-
-/*.thumb-p {
-  max-width: 100px;
+.thumbnail-recipe-pic {
+  display: inline-block;
   border: 1px solid #ddd;
-}*/
+  height: 100%;
+}
+
+.recipe-list {
+  text-align: center;
+}
 
 .thumbnail-wine-title {
   /*border: 1px solid #ddd;*/
   text-align: center;
+  word-wrap: break-word;
 }
 
 
-.centeredtest {
-  text-align:left;
+.results-sorter {
+  margin-top: 8px;
+  border: none;
+  /*border-color: #f8f8f8;*/
+  color: #777;
+  background-color: #f8f8f8;
 }
 
-.outlinetest {
-  border: 1px solid #C0C0C0;
+.food-choice {
+  text-align: center;
+}
+
+.logout {
+  margin-top: .6em;
+  margin-right: 1em;
+}
+
+.some-element {
+  border: 1px solid #ccc;
+  display: none;
+  font-size: 10px;
+  margin-top: 10px;
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+.some-div:hover #some-element {
+  display: block;
+}
+
+.single-wine {
+  border: 1px solid #ccc;
+  width: 60%;
+  background-color: white;
+  margin: 0 auto;
   border-radius: 10px;
+}
+
+.single-wine-heading {
+  text-align: center
+}
+
+.single-wine-image {
+  width: auto;
+  height: 15em;
+  display: inline-block;
+  margin-left: 3em;
+  margin-top: 3em;
+}
+
+.single-wine-p {
+  margin-top: 3em;
+  margin-left: 4em;
+  margin-right: 4em;
+}
+
+.buttons-row {
+  margin-left: 20%;
+  margin-bottom: 10px;
+}
+
+.single-wine-heading {
+  margin-top: 1em;
 }
 
 

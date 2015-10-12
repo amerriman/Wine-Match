@@ -53,7 +53,7 @@ function login(username, password) {
         user = true;
         console.log(data, "DATA");
         $rootScope.user = data.user.username;
-        console.log($rootScope, "rootScope")
+        console.log($rootScope, "rootScope");
         deferred.resolve();
       } else {
         user = false;
@@ -111,6 +111,8 @@ function logout() {
     // handle success
     .success(function (data) {
       user = false;
+      //does this work?
+      $rootScope.user = null;
       deferred.resolve();
     })
     // handle error
@@ -136,6 +138,8 @@ function register(username, password) {
       if(status === 200 && data.status){
         //this might not be ok
         user = true;
+        console.log(data.user, "DATA IN REGISTER")
+        // $rootScope.user = data.user.username;
         deferred.resolve();
       } else {
         deferred.reject();

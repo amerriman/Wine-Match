@@ -1,7 +1,7 @@
 
 app.controller('myController', ['$scope', function($scope) {
-  // $scope.greeting = "Hello World!";
-  console.log('here');
+  $scope.sortWine = "Sort";
+  // $scope.session = true;
 }]);
 
 
@@ -12,6 +12,7 @@ app.controller('myController', ['$scope', function($scope) {
 //**************************//
 
 app.controller('searchController', ['$scope', "httpFactory", function($scope, httpFactory){
+  // $scope.session = true;
 
   $scope.foodSelect = "Choose a food type";
   // $scope.foodSelect = httpFactory.foodSelect;

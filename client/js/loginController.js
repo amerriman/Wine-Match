@@ -4,6 +4,7 @@ app.controller('loginController',
   function ($scope, $location, AuthService) {
 
     // console.log(AuthService.getUserStatus());
+    // $scope.errorMessage = "";
 
     $scope.login = function () {
 
@@ -21,6 +22,7 @@ app.controller('loginController',
           //disable the button so it doesn't get clicked twice
           $scope.disabled = false;
           $scope.loginForm = {};
+
         })
         // handle error
         .catch(function () {

@@ -1,10 +1,11 @@
-<!-- <header id="header" class="header"> -->
 <div class="borders">
+
+  </div>
 
 <div>
   <div>
-    <h2>Winely.</h2>
-    <h4>Pair your meal with the perfect wine.</h4>
+    <h2 class="opening">Winely.</h2>
+    <h4 class="opening">Pair your meal with the perfect wine.</h4>
   </div>
 </div>
 <br>
@@ -17,8 +18,7 @@
 </div>
 <br>
 <br>
-<!-- </header> -->
-<!-- /header -->
+
 
 
 <!-- Login form -->
@@ -28,7 +28,7 @@
   </div>
 
   <div class="centered login-form">
-    <div ng-show="error" class="alert alert-danger"></div>
+    <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
     <form class="form-inline" ng-submit="login()">
       <div class="form-group">
         <!-- <label>Login</label> -->

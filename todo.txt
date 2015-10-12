@@ -1,15 +1,6 @@
-* Schemas:
-  -User
-  -Wines
-  ** Many wines can be attached to one user **
-  ** Will each wine be pushed into/linked to the array independently?
-  ** Should the User Schema have an array?  YES?
+*Logout button shown only if logged in??
 
-* ROUTES:
-  -Routes for users
-  -Routes for wines
 
-*TESTS
-  -make all the tests.  Make sure they actually pass
+*fix the boxes
 
-* make a user notes section that opens on 'add wine'
+*alerts should show up properly - and timeout?
