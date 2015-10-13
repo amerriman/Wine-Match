@@ -45,13 +45,13 @@ router.post('/users', function(req, res, next){
         code: req.body.code,
         price: req.body.price,
         notes: req.body.notes,
-        //this was score
         snoothrank: req.body.snoothrank,
         recipes: req.body.recipes
       }
     }
   };
   User.findOneAndUpdate(query, update, function(err, data){
+    // console.log(update, "UPDATE IN REQUEST 2");
    // console.log(req.user.username, "req.user.username");
    // console.log(req.user, "req.user")
     if(err){

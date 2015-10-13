@@ -33,10 +33,15 @@ app.config(function($routeProvider) {
       controller: 'allWineController',
       access: {restricted: false}
     })
-    .when('/winecellar/', {
+    .when('/winecellar', {
       templateUrl: '../views/winecellar.html',
       controller: 'userWineController',
       access: {restricted: true}
+    })
+    .when('/contact', {
+      templateUrl: '../views/contact.html',
+      controller: 'contactController',
+      access: {restricted: false}
     })
     .otherwise( {
       redirectTo: '/'

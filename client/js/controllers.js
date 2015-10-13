@@ -9,6 +9,10 @@ app.controller('myController', ['$rootScope', '$scope', '$location', "$routePara
 
 }]);
 
+app.controller('contactController', ['$scope', function($scope){
+  console.log("HERE")
+}]);
+
 
 //**************************//
 //                          //
@@ -165,8 +169,6 @@ app.controller('allWineController', ['$scope', "httpFactory", "$timeout", functi
       $scope.successMessage = true;
       $scope.addWineMessage = "Wine added to cellar";
       $timeout(messageTimeout, 3000);
-
-      console.log(response);
     })
     .catch(function(){
       $scope.errMessage = true;

@@ -5,3 +5,9 @@
 req.session.passport.user
 
 req.user should work too
+
+* Make an about page
+
+* Can there be a different heading if it's a logged in user and if there isn't?  I think yes...
+
+* figure out the damn rating thing.

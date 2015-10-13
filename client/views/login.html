@@ -2,35 +2,45 @@
   <div class="contentContainer">
 
 
-    <div>
+   <!--  <div>
       <div>
       <div ng-show="wineCellarError" class="alert alert-danger">{{wineCellarErrorMessage}}</div>
-
-        <h2 class="opening">Wine Match.</h2>
-        <h4 class="opening">Pair your meal with the perfect wine.</h4>
+        <br>
+        <br>
+        <br>
+        <h1 class="opening"><strong>Wine Match</strong></h1>
+        <h3 class="opening">Pair your meal with the perfect wine.</h3>
       </div>
+    </div> -->
+
+    <div class="page-header">
+      <h1>Wine Match <br><small>Pair your meal with the perfect wine.</small></h1>
     </div>
     <br>
     <!-- <hr/> -->
-    <div class="main-content">
-    <p>Petite syrah ad well-balanced musk fruity veniam minim and ullamco ut. Nebbiolo aromas sparkling ex mature licorice veniam ut sauvignon blanc artisanal. Jammy rose exquisite cabernet franc ageing jammy incididunt ageing red appealing.Zinfandel ad exercitation riesling connotes exercitation small batch for muscat and. Incididunt clean long-finish alvarinho exercitation muscadelle zinfandel exquisite complex garnet. Syrah laboris notes with aliqua plum and prosecco enim for.</p>
-    <br>
+
     <!-- <p>Petite syrah ad well-balanced musk fruity veniam minim and ullamco ut. Nebbiolo aromas sparkling ex mature licorice veniam ut sauvignon blanc artisanal. Jammy rose exquisite cabernet franc ageing jammy incididunt ageing red appealing.Zinfandel ad exercitation riesling connotes exercitation small batch for muscat and. Incididunt clean long-finish alvarinho exercitation muscadelle zinfandel exquisite complex garnet. Syrah laboris notes with aliqua plum and prosecco enim for.</p> -->
 
-    </div>
+    <!-- </div> -->
     <br>
     <br>
 
 
-
+      <div class="centered">
+        <h3><small>Registration is free and allows you to save wines to your personal cellar!</small></h3>
+      </div>
+      <br>
 
       <div class="centered" ng-show="choiceButtons">
         <button type="button" class="btn btn-default home-btn" ng-click="showLoginDiv()">Login</button>
         <a href="/#/register"><button type="button" class="btn btn-default home-btn">Register</button></a>
+        <a href="/#/search"><button type="button" class="btn btn-default home-btn"><small>Continue as guest</small></button></a>
       </div>
+      <br>
+      <br>
 
-    <br>
-    <br>
+
+
 
     <!-- Login form -->
       <div class="centered login-form" ng-show="loginDiv">
@@ -45,7 +55,7 @@
             <button type="submit" class="btn btn-default" ng-disabled="disabled">Login</button>
         </form>
         <br>
-        <a href="/#/register">Register for free!</a>
+        <a href="/#/register">Register</a>
         <!-- <br> -->
         <!-- <a class="btn btn-success" href="/social/github">Login with Github</a> -->
         <!-- can set an ngclick to change user to true, but that is super janky -->

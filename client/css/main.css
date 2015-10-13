@@ -49,7 +49,7 @@ ul {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  /*#3D200E - color to make header and button...*/
+  /*#3D200E - color to make header and button when able to dynamically change...*/
 }
 
 
@@ -128,7 +128,7 @@ ul {
 }
 
 .thumbnails {
-    height: 13em;
+    height: 14em;
     padding: 1%;
     border: 8px solid #F3F3F5;
     font-family: 'Open Sans', sans-serif;
@@ -202,7 +202,7 @@ span.text-content {
 }
 
 .more-info {
-  margin-left: 3em;
+  margin-left: 44%;
 }
 
 
@@ -312,6 +312,119 @@ span.text-content {
 /*.cellar {
   background-color: #3D200E;
 }*/
+
+/* About Me */
+section {
+  padding: 1.875em 0;
+}
+section h1 {
+  font-family: 'Cutive', serif;
+  font-size: 3.125em;
+  text-align: center;
+  color: #009eff;
+}
+
+section hr {
+  border: 1px solid #365C5B;
+  background-color: #365C5B;
+  max-width: 3.75em;
+  margin: 2.5em auto;
+}
+
+#about-me {
+  padding-top: 8.75em;
+}
+
+#about-me img {
+  max-width: 18%;
+  border-radius: 50%;
+  margin-left: 7%;
+}
+
+#about-me h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  text-align: justify;
+  line-height: 1.625em;
+  max-width: 64%;
+  float: right;
+}
+
+.content-title {
+  color: #365C5B;
+}
+
+
+/* Social */
+
+.social {
+  text-align: center;
+}
+
+.social li {
+  /*margin: 0 0.3125em;*/
+  display: inline-block;
+}
+
+#socialUL {
+  padding-right: 40px
+}
+
+.social-links {
+  height: 100px;
+  width: 100px;
+}
+
+/*.twitter {
+  background: url("../img/twitter.png");
+  width: 100px;
+  height: 100px;
+}*/
+
+/*.twitter:hover {
+  background: url("../img/twitter-hover.png");
+  width: 100px;
+  height: 100px;
+}*/
+
+/*.linkedin {
+  background: url("../img/linkedin2.jpg");
+  width: 100px;
+  height: 100px;
+}*/
+
+/*.linkedin:hover {
+  background: url("../img/linkedin-hover.png");
+  width: 100px;
+  height: 100px;
+}*/
+
+.github {
+  background: url("../img/github2.jpg");
+  width: 100px;
+  height: 100px;
+}
+
+/*.github:hover {
+  background: url("../img/github-hover.png");
+  width: 100px;
+  height: 100px;
+}*/
+
+/* Footer */
+
+footer {
+  padding-bottom: 3.75em;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2em;
+  font-weight: 600;
+  text-align: center;
+  color: #365C5B;
+  /*color: #1D4867;*/
+
+}
+
 
 
 

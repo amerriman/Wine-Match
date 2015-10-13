@@ -16,7 +16,7 @@ var User = new Schema (
         code: String,
         price: Number,
         notes: String,
-        score: Number,
+        snoothrank: Number,
         recipes: []
       }
   ]
