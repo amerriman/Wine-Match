@@ -4,7 +4,7 @@ app.controller('registerController', ['$scope', '$location', 'AuthService', func
     console.log(AuthService.getUserStatus());
 
     $scope.register = function () {
- console.log(AuthService.getUserStatus(), "getusrstatus on register - should be false");
+ // console.log(AuthService.getUserStatus(), "getusrstatus on register - should be false");
       // initial values
       $scope.error = false;
       $scope.disabled = true;
@@ -13,14 +13,14 @@ app.controller('registerController', ['$scope', '$location', 'AuthService', func
       AuthService.register($scope.registerForm.username, $scope.registerForm.password)
         // handle success
         .then(function () {
-           console.log(AuthService.getUserStatus(), "getusrstatus on register - should be true if worked");
+           // console.log(AuthService.getUserStatus(), "getusrstatus on register - should be true if worked");
           $location.path('/search');
           $scope.disabled = false;
           $scope.registerForm = {};
         })
         // handle error
         .catch(function () {
-           console.log(AuthService.getUserStatus(), "getusrstatus on register - should be false if err");
+           // console.log(AuthService.getUserStatus(), "getusrstatus on register - should be false if err");
           $scope.error = true;
           $scope.errorMessage = "Something went wrong!";
           $scope.disabled = false;

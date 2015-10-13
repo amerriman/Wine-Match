@@ -1,11 +1,12 @@
-<div class="borders">
-  <h1>{{user}}'s Wine Cellar</h1>
+<div class="wineBorders">
+  <div class="contentContainer">
 
-  <div ng-show="results">
-      <ul ng-repeat="wine in userWines | orderBy: sortWine">
-        <li class="thumbnails">
+    <div ng-show="results" class="results transparent">
+      <h3 class="results-title">{{user}}'s Wine Cellar</h3>
+      <ul class="wine-grid row">
+        <li class="thumbnails col-md-4" ng-repeat="wine in userWines | orderBy: sortWine">
           <div class="thumbnail-content">
-            <p class="thumbnail-wine-title"><strong>{{wine.wineName}}</strong></p>
+            <p class="thumbnail-wine-title"><strong>{{wine.name}}</strong></p>
             <div class="thumbnail-wine-pic">
               <img ng-src="{{wine.image}}" alt="Imagine a wine..." height="100px" width="auto">
             </div>
@@ -13,73 +14,64 @@
               <p class="thumb-p">
                 Vintage: {{wine.vintage}} <br>
                 Type: {{wine.varietal}} <br>
-                Price: {{wine.price | currency}}
+                Price: {{wine.price | currency}} <br>
+                Rating: {{wine.snoothrank}}/5
               </p>
               <a ng-click="wineDetails(wine.code)" class="btn btn-warning btn-sm more-info">More Info</a>
-             <a ng-click="deleteWine(wine._id)" class="btn btn-danger btn-sm delete">Delete</a>
+             <a ng-click="deleteWine(wine._id)" class="btn btn-danger btn-sm delete"><span class="glyphicon glyphicon-trash"></span></a>
             </div>
           </div>
         </li>
       </ul>
-  </div>
-
-  <div ng-show="single">
-
-
-  <div class="col col-md-8 col-md-offset-2 centeredtest outlinetest">
-        <!-- <div class="" -->
-    <h2>{{singleWine.name}}</h2>
-    <div class="col col-md-5 left">
-      <img ng-src="{{singleWine.image}}" alt="Wine Image" width="auto" height="100%">
-    </div>
-    <div class="col col-md-7 left">
-      <p>Winery: {{singleWine.winery}}</p>
-      <p>Winemaker notes: {{singleWine.wm_notes}}</p>
-      <p>Varietal: {{singleWine.varietal}}</p>
-      <p>Vintage: {{singleWine.vintage}}</p>
-      <p>Price: {{singleWine.price | currency}}</p>
-      <p>Rating: {{singleWine.snoothrank}}</p>
-      <p>Buy it online at: {{singleWine.link}}</p>
-
-      <button class="btn btn-info" ng-click="showRecipes()" ng-show="recBtn">Show Recipes</button>
-
-      <button class="btn btn-info" ng-click="hideRecipes()" ng-show="hideRecBtn">Hide Recipes</button>
-
     </div>
 
-    </div>
 
-     <button class="btn btn-info" ng-click="goBack()">Back to my cellar</button>
-  </div>
+        <div ng-show="single">
+        <div class="single-wine transparent2">
+          <div class="row">
+            <h3 class="single-wine-heading">{{singleWine.name}}</h3>
+          </div>
 
-
-  <!-- <div ng-show="recipesDiv">
-      <div class="thumbnail-container ">
-        <ul ng-repeat="recipe in recipes">
-          <li class="recipe-thumbnails">
-            <div class="recipe-thumbnail-content">
-              <p class="thumbnail-recipe-title"><strong>{{recipe.name}}</strong><br><a ng-href="{{recipe.source_link}}">Get the recipe!</a>
-              </p>
-            <div class="thumbnail-recipe-pic">
-              <img ng-src="{{recipe.image}}" alt="Imagine food" height="100px" width="auto">
+          <div class="row">
+            <div class="col col-md-5">
+              <img ng-src="{{singleWine.image}}" alt="Wine Image"  class="single-wine-image">
             </div>
-           </div>
-          </li>
-        </ul>
-    </div>
-  </div> -->
+            <div class="col col-md-7 single-wine-p">
+            <h4><strong>Winery:</strong> {{singleWine.winery}}</h4>
+              <h4><strong>Varietal:</strong> {{singleWine.varietal}}</h4>
+              <h4><strong>Vintage:</strong> {{singleWine.vintage}}</h4>
+              <h4><strong>Price:</strong> {{singleWine.price | currency}}</h4>
+              <h4><strong>Rating:</strong> {{singleWine.snoothrank}}</h4>
+              <a ng-href="{{singleWine.link}}"><strong>Order online!</strong></a>
+            </div>
+          </div>
 
-   <div ng-show="recipesDiv" class="row">
-      <div class="thumbnail-container ">
-        <ul ng-repeat="recipe in recipes" class="recipe-list">
-          <li class="recipe-thumbnails">
-            <a ng-href="{{recipe.source_link}}" target="_blank">
-              <img ng-src="{{recipe.image}}" alt="Imagine food" class="recipe-image some-div">
-              <span class="text-content">{{recipe.name}}</span>
-            </a>
-          </li>
-        </ul>
+          <div class="row">
+            <p class="single-wine-notes"><strong>Winemaker notes:</strong> {{singleWine.wm_notes}}</p>
+          </div>
+
+        <div class="row buttons-row">
+          <button class="btn btn-info" ng-click="showRecipes()" ng-show="recBtn">Show Recipes</button>
+          <button class="btn btn-info" ng-click="hideRecipes()" ng-show="hideRecBtn">Hide Recipes</button>
+          <button class="btn btn-info" ng-click="goBack()">Back to my cellar</button>
+        </div>
+
+        <div class="row">
+          <div ng-show="recipesDiv">
+            <div class="recipe-thumbnail-container">
+              <ul class="recipe-list">
+                <li ng-repeat="recipe in recipes" class="recipe-thumbnails">
+                  <a ng-href="{{recipe.source_link}}" target="_blank">
+                    <img ng-src="{{recipe.image}}" alt="Imagine food" class="recipe-image some-div">
+                    <span class="text-content">{{recipe.name}}</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
-
 </div>

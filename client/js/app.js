@@ -33,7 +33,7 @@ app.config(function($routeProvider) {
       controller: 'allWineController',
       access: {restricted: false}
     })
-    .when('/winecellar', {
+    .when('/winecellar/', {
       templateUrl: '../views/winecellar.html',
       controller: 'userWineController',
       access: {restricted: true}
@@ -41,6 +41,7 @@ app.config(function($routeProvider) {
     .otherwise( {
       redirectTo: '/'
     });
+
 
 });
 
@@ -55,43 +56,11 @@ app.run(function ($rootScope, $location, $route, AuthService) {
 });
 
 
-   // .when('/', {
-   //    templateUrl: 'views/home.html',
-   //    controller: 'myController',
-   //    access: {restricted: false}
-   //  })
-   //  .when('/login', {
-   //    templateUrl: 'views/login.html',
-   //    controller: 'loginController',
-   //    access: {restricted: false}
-   //  })
-   //  .when('/logout', {
-   //    controller: 'logoutController',
-   //    access: {restricted: true}
-   //  })
-   //  .when('/register', {
-   //    templateUrl: 'views/register.html',
-   //    controller: 'registerController',
-   //    access: {restricted: false}
-   //  })
-   //  .when('/search', {
-   //    templateUrl: '../views/search.html',
-   //    controller: 'searchController',
-   //    access: {restricted: false}
-   //  })
-   //  .when('/results', {
-   //    templateUrl: '../views/results.html',
-   //    controller: 'allWineController',
-   //    access: {restricted: false}
-   //  })
-   //  .when('/wine', {
-   //    templateUrl: '../views/wine.html',
-   //    controller: 'WineController',
-   //    access: {restricted: false}
-   //  })
-   //  .otherwise( {
-   //    redirectTo: '/'
-   //  });
+// app.run(function($rootScope){
+//   $rootScope.$on('$stateChangeSuccess',function(event, toState, toParams, fromState, fromParams){
+//     $rootScope.containerClass = toState.containerClass;
+//   });
+// });
 
 
 

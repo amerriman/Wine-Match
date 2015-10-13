@@ -5,6 +5,13 @@ app.controller('loginController',
 
     // console.log(AuthService.getUserStatus());
     // $scope.errorMessage = "";
+    $scope.loginDiv = false;
+    $scope.choiceButtons = true;
+
+    $scope.showLoginDiv = function(){
+      $scope.loginDiv = true;
+      $scope.choiceButtons = false;
+    };
 
     $scope.login = function () {
 
@@ -12,13 +19,13 @@ app.controller('loginController',
       $scope.error = false;
       $scope.disabled = true;
 
- console.log(AuthService.getUserStatus(), "getusrstatus on login - should be false here?");
+ // console.log(AuthService.getUserStatus(), "getusrstatus on login - should be false here?");
       // call login from service
       AuthService.login($scope.loginForm.username, $scope.loginForm.password)
         // handle success
         .then(function () {
           $location.path('/search');
-           console.log(AuthService.getUserStatus(), "getusrstatus on logout - should be true here?");
+           // console.log(AuthService.getUserStatus(), "getusrstatus on logout - should be true here?");
           //disable the button so it doesn't get clicked twice
           $scope.disabled = false;
           $scope.loginForm = {};

@@ -1,6 +1,7 @@
 *Logout button shown only if logged in??
 
 
-*fix the boxes
 
-*alerts should show up properly - and timeout?
+req.session.passport.user
+
+req.user should work too

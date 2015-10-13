@@ -29,30 +29,31 @@ router.get('/user/:id', function(req, res, next){
   });
 });
 
-//look for user and if it exists just update the wines, otherwise make a new one
-//POST one
+
+
+//POST one - find user and add a NEW WINE to the cellar - this should be a PUT -change this...
 router.post('/users', function(req, res, next){
 //How to query logged in user?
   var query = {username: req.user.username};
-  var options = {upsert: true, new: true};
+  // var options = {upsert: true, new: false};
   var update = {
       $push: { wines:{
-        wineName: req.body.wineName,
+        name: req.body.name,
         image: req.body.image,
         varietal: req.body.varietal,
         vintage: req.body.vintage,
         code: req.body.code,
         price: req.body.price,
         notes: req.body.notes,
-        score: req.body.score,
+        //this was score
+        snoothrank: req.body.snoothrank,
         recipes: req.body.recipes
       }
     }
   };
-  User.findOneAndUpdate(query, update, options, function(err, data){
+  User.findOneAndUpdate(query, update, function(err, data){
    // console.log(req.user.username, "req.user.username");
    // console.log(req.user, "req.user")
-
     if(err){
       console.log("Something's fucked up");
       res.json({'message': err});
@@ -64,20 +65,21 @@ router.post('/users', function(req, res, next){
 });
 
 
-//update ONE user
+
+// //update ONE user (not currently using)
 router.put('/user/:id', function(req, res, next){
   var query = {"_id": req.params.id};
   var update = {
     name: req.body.name,
     $push: {
       wines:{
-        wineName: req.body.wineName,
+        name: req.body.name,
         image: req.body.image,
         varietal: req.body.varietal,
         vintage: req.body.vintage,
         code: req.body.code,
         notes: req.body.notes,
-        score: req.body.score,
+        snoothrank: req.body.snoothrank,
         $push: {
           recipes:{
             title: req.body.title,
@@ -99,7 +101,8 @@ router.put('/user/:id', function(req, res, next){
 });
 
 
-//removes one wine (updates the user)
+
+//REMOVES one wine (updates the user)
 router.put('/users/:name/:id', function(req, res) {
 console.log(req, 'REQ');
   var query = {"username": req.params.name};
@@ -124,10 +127,6 @@ console.log(req, 'REQ');
     }
   });
 });
-
-
-
-
 
 
 

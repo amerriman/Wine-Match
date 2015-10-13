@@ -1,52 +1,55 @@
-<div class="borders">
-
-  </div>
-
-<div>
-  <div>
-    <h2 class="opening">Winely.</h2>
-    <h4 class="opening">Pair your meal with the perfect wine.</h4>
-  </div>
-</div>
-<br>
-<!-- <hr/> -->
-<div class="main-content">
-<p>Petite syrah ad well-balanced musk fruity veniam minim and ullamco ut. Nebbiolo aromas sparkling ex mature licorice veniam ut sauvignon blanc artisanal. Jammy rose exquisite cabernet franc ageing jammy incididunt ageing red appealing.Zinfandel ad exercitation riesling connotes exercitation small batch for muscat and. Incididunt clean long-finish alvarinho exercitation muscadelle zinfandel exquisite complex garnet. Syrah laboris notes with aliqua plum and prosecco enim for.</p>
-<br>
-<p>Petite syrah ad well-balanced musk fruity veniam minim and ullamco ut. Nebbiolo aromas sparkling ex mature licorice veniam ut sauvignon blanc artisanal. Jammy rose exquisite cabernet franc ageing jammy incididunt ageing red appealing.Zinfandel ad exercitation riesling connotes exercitation small batch for muscat and. Incididunt clean long-finish alvarinho exercitation muscadelle zinfandel exquisite complex garnet. Syrah laboris notes with aliqua plum and prosecco enim for.</p>
-
-</div>
-<br>
-<br>
+<div class="mainBorders">
+  <div class="contentContainer">
 
 
+    <div>
+      <div>
+      <div ng-show="wineCellarError" class="alert alert-danger">{{wineCellarErrorMessage}}</div>
 
-<!-- Login form -->
-
-  <div class="centered">
-    <h4>Login</h4>
-  </div>
-
-  <div class="centered login-form">
-    <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
-    <form class="form-inline" ng-submit="login()">
-      <div class="form-group">
-        <!-- <label>Login</label> -->
-        <input type="text" class="form-control input-sm" name="username" ng-model="loginForm.username" placeholder="username"required>
+        <h2 class="opening">Wine Match.</h2>
+        <h4 class="opening">Pair your meal with the perfect wine.</h4>
       </div>
-      <div class="form-group">
-        <!-- <label>Password</label> -->
-        <input type="password" class="form-control input-sm" name="password" ng-model="loginForm.password" placeholder="password" required>
-      </div>
-        <button type="submit" class="btn btn-success btn-sm" ng-disabled="disabled">Login</button>
-    </form>
+    </div>
     <br>
-    <a href="/#/register">Register for an account!</a>
-    <!-- <br> -->
-    <!-- <a class="btn btn-success" href="/social/github">Login with Github</a> -->
-    <!-- can set an ngclick to change user to true, but that is super janky -->
+    <!-- <hr/> -->
+    <div class="main-content">
+    <p>Petite syrah ad well-balanced musk fruity veniam minim and ullamco ut. Nebbiolo aromas sparkling ex mature licorice veniam ut sauvignon blanc artisanal. Jammy rose exquisite cabernet franc ageing jammy incididunt ageing red appealing.Zinfandel ad exercitation riesling connotes exercitation small batch for muscat and. Incididunt clean long-finish alvarinho exercitation muscadelle zinfandel exquisite complex garnet. Syrah laboris notes with aliqua plum and prosecco enim for.</p>
+    <br>
+    <!-- <p>Petite syrah ad well-balanced musk fruity veniam minim and ullamco ut. Nebbiolo aromas sparkling ex mature licorice veniam ut sauvignon blanc artisanal. Jammy rose exquisite cabernet franc ageing jammy incididunt ageing red appealing.Zinfandel ad exercitation riesling connotes exercitation small batch for muscat and. Incididunt clean long-finish alvarinho exercitation muscadelle zinfandel exquisite complex garnet. Syrah laboris notes with aliqua plum and prosecco enim for.</p> -->
+
+    </div>
+    <br>
+    <br>
+
+
+
+
+      <div class="centered" ng-show="choiceButtons">
+        <button type="button" class="btn btn-default home-btn" ng-click="showLoginDiv()">Login</button>
+        <a href="/#/register"><button type="button" class="btn btn-default home-btn">Register</button></a>
+      </div>
+
+    <br>
+    <br>
+
+    <!-- Login form -->
+      <div class="centered login-form" ng-show="loginDiv">
+        <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+        <form class="form-inline" ng-submit="login()">
+          <div class="form-group">
+            <input type="text" class="form-control" name="username" ng-model="loginForm.username" placeholder="username"required>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" name="password" ng-model="loginForm.password" placeholder="password" required>
+          </div>
+            <button type="submit" class="btn btn-default" ng-disabled="disabled">Login</button>
+        </form>
+        <br>
+        <a href="/#/register">Register for free!</a>
+        <!-- <br> -->
+        <!-- <a class="btn btn-success" href="/social/github">Login with Github</a> -->
+        <!-- can set an ngclick to change user to true, but that is super janky -->
+      </div>
+
   </div>
-
-
-
 </div>
