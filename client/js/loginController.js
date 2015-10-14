@@ -1,12 +1,15 @@
 //was myApp originally
 app.controller('loginController',
-  ['$scope', '$location', 'AuthService',
-  function ($scope, $location, AuthService) {
+  ['$scope', '$rootScope', '$location', 'AuthService',
+  function ($scope, $rootScope, $location, AuthService) {
 
-    // console.log(AuthService.getUserStatus());
+    // console.log(AuthService.getUserStatus(), "auth status on login page");
+
     // $scope.errorMessage = "";
     $scope.loginDiv = false;
     $scope.choiceButtons = true;
+
+
 
     $scope.showLoginDiv = function(){
       $scope.loginDiv = true;

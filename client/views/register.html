@@ -4,7 +4,7 @@
     <div class="borders">
       <div class="col-md-4">
         <h2>Register</h2>
-        <div ng-show="error" class="alert alert-danger"></div>
+        <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
         <form class="form" ng-submit="register()">
           <div class="form-group">
             <label>Username</label>

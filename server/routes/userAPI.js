@@ -45,23 +45,7 @@ router.post('/login', function(req, res, next) {
   })(req, res, next);
 });
 
-//*************************************************
-//will not work with Angular
-// router.post('/login', function(req, res, next) {
-//  if (req.body.rememberMe) {
-//    req.session.cookie.maxAge = config.cookieMaxAge;
-//  }
-//  next();
-// }, passport.authenticate('local', {failureRedirect:'/', failureFlash: 'Invalid credentials', successRedirect:'/pics'
-// }));
 
-// //logout function destroys the cookie
-// router.get('/logout', function(req, res, next) {
-//  req.logout();
-//  req.session.destroy();
-//  res.redirect('/');
-// });
-//*************************************************
 
 
 router.get('/logout', function(req, res) {

@@ -10,6 +10,7 @@ req.user should work too
 
 * Can there be a different heading if it's a logged in user and if there isn't?  I think yes...
 
-* figure out the damn rating thing.
+** on load make an ajax call (make an endpoint that checks to see if the user is logged in), and if the user is logged in, set the user to true (it's reset to null everytime the page refreshes)
 
-** pull the images out into a different file and then load them? Will that work?  Or pull ALL of the info into a new file so it all stays together?
+
+/getuser route, search by req.user, if user, send back some info about the user, else return something like "no user logged in"

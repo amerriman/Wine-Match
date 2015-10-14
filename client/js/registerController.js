@@ -1,7 +1,9 @@
 //was myApp originally
 app.controller('registerController', ['$scope', '$location', 'AuthService', function($scope, $location, AuthService) {
 
-    console.log(AuthService.getUserStatus());
+    // console.log(AuthService.getUserStatus());
+    $scope.errorMessage = "";
+
 
     $scope.register = function () {
  // console.log(AuthService.getUserStatus(), "getusrstatus on register - should be false");
