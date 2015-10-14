@@ -15,7 +15,7 @@ var passport = require('passport');
 // var routes = require('./routes/index.js');
 var apiRoutes = require('./routes/api.js');
 var user = require('./routes/userAPI.js');
-var social = require('./routes/socialAPI.js');
+// var social = require('./routes/socialAPI.js');
 
 
 // *** express instance *** //
@@ -67,15 +67,13 @@ app.use(express.static(path.join(__dirname, '../client')));
 // *** main routes *** //
 app.use('/api/', apiRoutes);
 app.use('/auth/', user);
-app.use('/social/', social);
+// app.use('/social/', social);
 
 
 
 //NEW MAIN ROUTE
 //When user hits main route, we're just sending up this static index file - angular handles the rests  This can go in the index.js route file also
-app.use('/', function (req,res) {
-  res.sendFile(path.join(__dirname, '../client/views/', 'index.html'));
-});
+app.use('/', function (req,res) {res.sendFile(path.join(__dirname, '../client/views/', 'index.html'));});
 
 
 // catch 404 and forward to error handler
