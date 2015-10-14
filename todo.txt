@@ -11,3 +11,5 @@ req.user should work too
 * Can there be a different heading if it's a logged in user and if there isn't?  I think yes...
 
 * figure out the damn rating thing.
+
+** pull the images out into a different file and then load them? Will that work?  Or pull ALL of the info into a new file so it all stays together?

@@ -8,7 +8,7 @@ app.factory('httpFactory', ['$http', function($http){
   };
 
   obj.getOneWine = function(code){
-    return $http.get('https://api.snooth.com/wine//?akey=dc063bj39dxhgxxop6y9rq2cymy4nqk0p1uf6ccqdhqujus7&food=1&id='+ code);
+    return $http.get('//api.snooth.com/wine//?akey=dc063bj39dxhgxxop6y9rq2cymy4nqk0p1uf6ccqdhqujus7&food=1&id='+ code);
   };
 
   obj.getAllUserWines = function(url){
