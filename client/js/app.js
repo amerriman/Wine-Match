@@ -4,11 +4,6 @@ var app = angular.module('myApp', ['ngRoute']);
 app.config(function($routeProvider) {
 
   $routeProvider
-  // .when('/', {
-  //     templateUrl: 'views/home.html',
-  //     controller: 'myController',
-  //     access: {restricted: false}
-  //   })
     .when('/', {
       templateUrl: 'views/login.html',
       controller: 'loginController',
