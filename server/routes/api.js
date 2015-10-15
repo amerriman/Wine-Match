@@ -35,7 +35,7 @@ router.get('/user/:id', function(req, res, next){
 router.post('/users', function(req, res, next){
 //How to query logged in user?
   var query = {username: req.user.username};
-  // var options = {upsert: true, new: false};
+  var options = {upsert: true, new: true};
   var update = {
       $push: { wines:{
         name: req.body.name,
@@ -55,10 +55,10 @@ router.post('/users', function(req, res, next){
    // console.log(req.user.username, "req.user.username");
    // console.log(req.user, "req.user")
     if(err){
-      console.log("Something's fucked up");
+      // console.log("Something's fucked up");
       res.json({'message': err});
     } else {
-      console.log("Holy shit...it WORKED!");
+      // console.log("Holy shit...it WORKED!");
       res.json({"SUCCESS": data});
     }
   });
