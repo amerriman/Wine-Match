@@ -39,7 +39,7 @@ app.controller('searchController', ['$scope', "httpFactory", function($scope, ht
 //                          //
 //**************************//
 
-app.controller('allWineController', ['$scope', "httpFactory", "$timeout", function($scope, httpFactory, $timeout) {
+app.controller('allWineController', ['$rootScope', '$scope', "httpFactory", "$timeout", function($rootScope, $scope, httpFactory, $timeout) {
 
   $scope.successMessage = false;
   $scope.errMessage = false;
@@ -140,8 +140,8 @@ app.controller('allWineController', ['$scope', "httpFactory", "$timeout", functi
 
 
 //Post a wine - right now it just makes a bunch of random wines not attached to users
-  $scope.postWine = function(){
-
+  $scope.putWine = function(){
+    console.log($rootScope.user)
     var recipes = [];
     for (var i = 0; i < $scope.recipes.length; i++) {
       recipes.push(
@@ -151,7 +151,6 @@ app.controller('allWineController', ['$scope', "httpFactory", "$timeout", functi
         foodImage: $scope.recipes[i].image
       });
     }
-    console.log(recipes);
     var payload = {
       "username": $scope.currentUser,
       "name": $scope.singleWine.name,
@@ -164,7 +163,7 @@ app.controller('allWineController', ['$scope', "httpFactory", "$timeout", functi
       "snoothrank": $scope.singleWine.snoothrank,
       "recipes": recipes
     };
-    httpFactory.post('/api/users', payload)
+    httpFactory.put('/api/users', payload)
     .then(function(response){
       $scope.successMessage = true;
       $scope.addWineMessage = "Wine added to cellar";

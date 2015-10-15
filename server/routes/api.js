@@ -31,13 +31,69 @@ router.get('/user/:id', function(req, res, next){
 
 
 
+// //POST one - find user and add a NEW WINE to the cellar - this should be a PUT -change this...
+// router.post('/users', function(req, res, next){
+// //How to query logged in user?
+//   var query = {username: req.user.username};
+//   var options = {upsert: true, new: true};
+//   var update = {
+//       $push: { wines:{
+//         name: req.body.name,
+//         image: req.body.image,
+//         varietal: req.body.varietal,
+//         vintage: req.body.vintage,
+//         code: req.body.code,
+//         price: req.body.price,
+//         notes: req.body.notes,
+//         snoothrank: req.body.snoothrank,
+//         recipes: req.body.recipes
+//       }
+//     }
+//   };
+//   User.findOneAndUpdate(query, update, function(err, data){
+//     // console.log(update, "UPDATE IN REQUEST 2");
+//    // console.log(req.user.username, "req.user.username");
+//    // console.log(req.user, "req.user")
+//     if(err){
+//       // console.log("Something's fucked up");
+//       res.json({'message': err});
+//     } else {
+//       // console.log("Holy shit...it WORKED!");
+//       res.json({"SUCCESS": data});
+//     }
+//   });
+// });
+
+
+
 //POST one - find user and add a NEW WINE to the cellar - this should be a PUT -change this...
 router.post('/users', function(req, res, next){
 //How to query logged in user?
+console.log('HERE IN API')
+  newUser = new User({
+    username: req.body.name,
+    password: req.body.password,
+    wines: [],
+  });
+ // console.log(newUser, "newUser");
+  newUser.save(function(err, data){
+    if(err){
+      // console.log("Something's fucked up");
+      res.json({'message': err});
+    } else {
+      // console.log("Holy shit...it WORKED!");
+      res.json({"SUCCESS": data});
+    }
+  });
+});
+
+
+// //update ONE user (attempt)
+router.put('/users', function(req, res, next){
   var query = {username: req.user.username};
-  var options = {upsert: true, new: true};
   var update = {
-      $push: { wines:{
+    $push: {
+      wines:{
         name: req.body.name,
         image: req.body.image,
         varietal: req.body.varietal,
@@ -50,55 +106,53 @@ router.post('/users', function(req, res, next){
       }
     }
   };
-  User.findOneAndUpdate(query, update, function(err, data){
-    // console.log(update, "UPDATE IN REQUEST 2");
-   // console.log(req.user.username, "req.user.username");
-   // console.log(req.user, "req.user")
-    if(err){
-      // console.log("Something's fucked up");
-      res.json({'message': err});
-    } else {
-      // console.log("Holy shit...it WORKED!");
-      res.json({"SUCCESS": data});
-    }
-  });
-});
-
-
-
-// //update ONE user (not currently using)
-router.put('/user/:id', function(req, res, next){
-  var query = {"_id": req.params.id};
-  var update = {
-    name: req.body.name,
-    $push: {
-      wines:{
-        name: req.body.name,
-        image: req.body.image,
-        varietal: req.body.varietal,
-        vintage: req.body.vintage,
-        code: req.body.code,
-        notes: req.body.notes,
-        snoothrank: req.body.snoothrank,
-        $push: {
-          recipes:{
-            title: req.body.title,
-            sourceLink: req.body.sourceLink,
-            foodImage: req.body.foodImage
-          }
-        }
-      }
-    }
-  };
   var options = {new: true};
   User.findOneAndUpdate(query, update, options, function(err, data){
     if(err){
+      console.log("Something's fucked up");
       res.json({'message': err});
     } else {
+      console.log("Holy shit...it WORKED!");
       res.json({'UPDATED' : data});
     }
   });
 });
+
+
+
+// // //update ONE user (not currently using)
+// router.put('/user/:id', function(req, res, next){
+//   var query = {"_id": req.params.id};
+//   var update = {
+//     name: req.body.name,
+//     $push: {
+//       wines:{
+//         name: req.body.name,
+//         image: req.body.image,
+//         varietal: req.body.varietal,
+//         vintage: req.body.vintage,
+//         code: req.body.code,
+//         notes: req.body.notes,
+//         snoothrank: req.body.snoothrank,
+//         $push: {
+//           recipes:{
+//             title: req.body.title,
+//             sourceLink: req.body.sourceLink,
+//             foodImage: req.body.foodImage
+//           }
+//         }
+//       }
+//     }
+//   };
+//   var options = {new: true};
+//   User.findOneAndUpdate(query, update, options, function(err, data){
+//     if(err){
+//       res.json({'message': err});
+//     } else {
+//       res.json({'UPDATED' : data});
+//     }
+//   });
+// });
 
 
 

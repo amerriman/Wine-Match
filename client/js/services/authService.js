@@ -132,7 +132,8 @@ function register(username, password) {
   var deferred = $q.defer();
 
   // send a post request to the server
-  $http.post('/auth/register', {username: username, password: password})
+  $http.post('/auth/register', {username: username, password: password, wines: []})
+  console.log("HERE IN AUTH SERVICE")
     // handle success
     .success(function (data, status) {
       if(status === 200 && data.status){

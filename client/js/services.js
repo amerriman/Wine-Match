@@ -23,6 +23,10 @@ app.factory('httpFactory', ['$http', function($http){
     return $http.post(url, payload);
   };
 
+  obj.put = function(url, payload){
+    return $http.put(url, payload);
+  };
+
   obj.deleteWine = function(url){
   return $http.put(url);
   };
