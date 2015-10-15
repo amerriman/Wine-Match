@@ -9,7 +9,7 @@ var User = new Schema (
     someID: String,
     wines:[
       {
-        name: {type: String, unique: true},
+        name: String,
         image: String,
         varietal: String,
         vintage: Number,
