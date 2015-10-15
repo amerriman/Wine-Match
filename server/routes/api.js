@@ -69,13 +69,11 @@ router.get('/user/:id', function(req, res, next){
 //POST one - find user and add a NEW WINE to the cellar - this should be a PUT -change this...
 router.post('/users', function(req, res, next){
 //How to query logged in user?
-console.log('HERE IN API')
   newUser = new User({
     username: req.body.name,
-    password: req.body.password
-    // wines: [],
+    password: req.body.password,
+    wines: [],
   });
- // console.log(newUser, "newUser");
   newUser.save(function(err, data){
     if(err){
       // console.log("Something's fucked up");

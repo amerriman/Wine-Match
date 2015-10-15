@@ -140,42 +140,42 @@ app.controller('allWineController', ['$rootScope', '$scope', "httpFactory", "$ti
 
 
 //Post a wine - right now it just makes a bunch of random wines not attached to users
-  // $scope.putWine = function(){
-  //   console.log($rootScope.user)
-  //   var recipes = [];
-  //   for (var i = 0; i < $scope.recipes.length; i++) {
-  //     recipes.push(
-  //     {
-  //       title: $scope.recipes[i].name,
-  //       soureLink: $scope.recipes[i].source_link,
-  //       foodImage: $scope.recipes[i].image
-  //     });
-  //   }
-  //   var payload = {
-  //     "username": $scope.currentUser,
-  //     "name": $scope.singleWine.name,
-  //     "image": $scope.singleWine.image,
-  //     "varietal": $scope.singleWine.varietal,
-  //     "vintage": $scope.singleWine.vintage,
-  //     "code": $scope.singleWine.code,
-  //     "price": $scope.singleWine.price,
-  //     "notes": $scope.singleWine.wm_notes,
-  //     "snoothrank": $scope.singleWine.snoothrank,
-  //     "recipes": recipes
-  //   };
-  //   httpFactory.put('/api/users', payload)
-  //   .then(function(response){
-  //     $scope.successMessage = true;
-  //     $scope.addWineMessage = "Wine added to cellar";
-  //     $timeout(messageTimeout, 3000);
-  //   })
-  //   .catch(function(){
-  //     $scope.errMessage = true;
-  //     $scope.addWineMessage = "You must be logged in to add a wine!";
-  //     $timeout(messageTimeout, 3000);
+  $scope.putWine = function(){
+    console.log($rootScope.user)
+    var recipes = [];
+    for (var i = 0; i < $scope.recipes.length; i++) {
+      recipes.push(
+      {
+        title: $scope.recipes[i].name,
+        soureLink: $scope.recipes[i].source_link,
+        foodImage: $scope.recipes[i].image
+      });
+    }
+    var payload = {
+      "username": $scope.currentUser,
+      "name": $scope.singleWine.name,
+      "image": $scope.singleWine.image,
+      "varietal": $scope.singleWine.varietal,
+      "vintage": $scope.singleWine.vintage,
+      "code": $scope.singleWine.code,
+      "price": $scope.singleWine.price,
+      "notes": $scope.singleWine.wm_notes,
+      "snoothrank": $scope.singleWine.snoothrank,
+      "recipes": recipes
+    };
+    httpFactory.put('/api/users', payload)
+    .then(function(response){
+      $scope.successMessage = true;
+      $scope.addWineMessage = "Wine added to cellar";
+      $timeout(messageTimeout, 3000);
+    })
+    .catch(function(){
+      $scope.errMessage = true;
+      $scope.addWineMessage = "You must be logged in to add a wine!";
+      $timeout(messageTimeout, 3000);
 
-  //   });
-  // };
+    });
+  };
 
 }]);
 

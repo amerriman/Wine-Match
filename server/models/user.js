@@ -7,19 +7,19 @@ var User = new Schema (
     username: String,
     password: String,
     someID: String,
-  //   wines:[
-  //     {
-  //       name: String,
-  //       image: String,
-  //       varietal: String,
-  //       vintage: Number,
-  //       code: String,
-  //       price: Number,
-  //       notes: String,
-  //       snoothrank: Number,
-  //       recipes: []
-  //     }
-  // ]
+    wines:[
+      {
+        name: String,
+        image: String,
+        varietal: String,
+        vintage: Number,
+        code: String,
+        price: Number,
+        notes: String,
+        snoothrank: Number,
+        recipes: []
+      }
+  ]
 
   }
 );
