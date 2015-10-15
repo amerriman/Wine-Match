@@ -72,8 +72,8 @@ router.post('/users', function(req, res, next){
 console.log('HERE IN API')
   newUser = new User({
     username: req.body.name,
-    password: req.body.password,
-    wines: [],
+    password: req.body.password
+    // wines: [],
   });
  // console.log(newUser, "newUser");
   newUser.save(function(err, data){
