@@ -46,6 +46,20 @@ router.post('/login', function(req, res, next) {
   })(req, res, next);
 });
 
+//Working - shows current logged in user
+router.get('/getuser', function(req, res, next){
+  // if (err) {
+  //   console.log(err);
+  //   return next(err);
+  // }
+  if (!req.user) {
+    console.log("No one is logged in");
+  }
+  return res.status(200).json({message: req.user.username});
+  // console.log(req.user.username, "REC USER USERNAME");
+
+});
+
 
 
 

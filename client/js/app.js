@@ -45,11 +45,23 @@ app.config(function($routeProvider) {
 
 });
 
+
+// //was myApp originally
+// //Checks to see if the user is logged in.  Need to add logic to show which routes are protected by this.
+// app.run(function ($rootScope, $location, $route, AuthService) {
+//   $rootScope.$on('$routeChangeStart', function (event, next, current) {
+//     if (next.access.restricted && !AuthService.getUserStatus()) {
+//       $location.path('/login');
+//     }
+//   });
+// });
+
+
 //was myApp originally
 //Checks to see if the user is logged in.  Need to add logic to show which routes are protected by this.
 app.run(function ($rootScope, $location, $route, AuthService) {
   $rootScope.$on('$routeChangeStart', function (event, next, current) {
-    if (next.access.restricted && !AuthService.getUserStatus()) {
+    if (next.access.restricted && !$rootScope.user) {
       $location.path('/login');
     }
   });

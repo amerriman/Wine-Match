@@ -10,7 +10,7 @@ app.controller('myController', ['$rootScope', '$scope', '$location', "$routePara
 }]);
 
 app.controller('contactController', ['$scope', function($scope){
-  console.log("HERE")
+  console.log("HERE");
 }]);
 
 
@@ -22,11 +22,25 @@ app.controller('contactController', ['$scope', function($scope){
 
 app.controller('searchController', ['$scope', "httpFactory", function($scope, httpFactory){
 
+  findUser();
+
   $scope.foodSelect = "Choose a food type";
 
   //once the wines are in an array - we can iterate over them and put the match wine in a for loop with the wineType[i]
   $scope.getOption = function(){
     chooseWine($scope.foodSelect);
+  };
+
+  //   findUser = function(url){
+  //   httpFactory.getCurrentUser(url)
+  //   .then(function(response){
+  //   console.log(response, "SUCCESS");
+  //   });
+  // };
+
+
+    findUser = function(){
+   console.log("HOLA!");
   };
 
 }]);
@@ -40,6 +54,21 @@ app.controller('searchController', ['$scope', "httpFactory", function($scope, ht
 //**************************//
 
 app.controller('allWineController', ['$rootScope', '$scope', "httpFactory", "$timeout", function($rootScope, $scope, httpFactory, $timeout) {
+
+//route is sending a json response of the username, and set that response to the rootscope user?
+
+   findUser = function(url){
+    httpFactory.getCurrentUser(url)
+    .then(function(response){
+    // console.log(response.data.message, "SUCCESS");
+    $rootScope.user = response.data.message;
+    // console.log($rootScope.user, "rootscope user")
+    });
+  };
+
+  findUser('auth/getuser');
+
+
 
   $scope.successMessage = false;
   $scope.errMessage = false;
@@ -197,6 +226,17 @@ app.controller('userWineController', ['$rootScope', '$scope', 'httpFactory', 'Au
   $scope.wines = [];
   $scope.recipes = [];
   $scope.userWines = [];
+
+     findUser = function(url){
+    httpFactory.getCurrentUser(url)
+    .then(function(response){
+    // console.log(response.data.message, "SUCCESS");
+    $rootScope.user = response.data.message;
+    // console.log($rootScope.user, "rootscope user")
+    });
+  };
+
+  findUser('auth/getuser');
 
 console.log($rootScope.user, "rootScope.user in userWineController");
 

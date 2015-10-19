@@ -15,7 +15,7 @@ body {
 
 
 a {
-  /*color: burgundy;*/
+  /*color: ;*/
 }
 
 
@@ -61,9 +61,25 @@ ul {
 }
 
 .navbar-default {
-  background-color: #A2BABE;
+  /*background-color: #A2BABE;*/
+  background-color: #043140;
 }
 
+.navbar-default .navbar-nav>li>a {
+    color: silver;
+}
+
+.navbar-default .navbar-link {
+    color: silver;
+}
+
+.navbar-default .navbar-brand {
+    color: silver;
+}
+
+.navbar-log{
+  color: silver;
+}
 
 .opening {
   padding-left: 100px;
@@ -114,6 +130,7 @@ ul {
 .transparent {
   background:#EEEEF0;
   background:rgba(255,255,255,0.5);
+  padding-top: 30px;
 }
 
 .transparent2 {
@@ -128,7 +145,7 @@ ul {
 }
 
 .thumbnails {
-    height: 14em;
+    height: 13em;
     padding: 1%;
     border: 8px solid #F3F3F5;
     font-family: 'Open Sans', sans-serif;
@@ -207,9 +224,15 @@ span.text-content {
 
 
 .thumbnail-wine-pic {
-  display: inline-block;
-  border: 1px solid #ddd;
-  height: 100%;
+  /*display: inline-block;*/
+  /*border: 1px solid #ddd;*/
+  max-height: 9em;
+  max-width: 9em;
+  /*margin-left: 5%;*/
+}
+
+.thumb-p {
+  /*padding-left: 10px;*/
 }
 
 .thumbnail-recipe-pic {
@@ -233,9 +256,9 @@ span.text-content {
 .results-sorter {
   margin-top: 8px;
   /*border: none;*/
-  border-color: #A2BABE;
-  /*color: #777;*/
- background-color: #A2BABE;
+  border-color: #043140;
+  color: silver;
+ background-color: #043140;
 }
 
 .food-choice {
@@ -243,8 +266,9 @@ span.text-content {
 }
 
 .logout {
-  margin-top: .6em;
+  margin-top: 1.15em;
   margin-right: 1em;
+
 }
 
 .some-element {
@@ -376,29 +400,6 @@ section hr {
   width: 100px;
 }
 
-/*.twitter {
-  background: url("../img/twitter.png");
-  width: 100px;
-  height: 100px;
-}*/
-
-/*.twitter:hover {
-  background: url("../img/twitter-hover.png");
-  width: 100px;
-  height: 100px;
-}*/
-
-/*.linkedin {
-  background: url("../img/linkedin2.jpg");
-  width: 100px;
-  height: 100px;
-}*/
-
-/*.linkedin:hover {
-  background: url("../img/linkedin-hover.png");
-  width: 100px;
-  height: 100px;
-}*/
 
 .github {
   background: url("../img/github2.jpg");
@@ -424,6 +425,8 @@ footer {
   /*color: #1D4867;*/
 
 }
+
+
 
 
 

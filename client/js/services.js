@@ -31,6 +31,10 @@ app.factory('httpFactory', ['$http', function($http){
   return $http.put(url);
   };
 
+  obj.getCurrentUser = function(url){
+    return $http.get(url);
+  };
+
   return obj;
 }]);
 

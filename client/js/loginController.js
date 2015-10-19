@@ -1,9 +1,20 @@
 //was myApp originally
 app.controller('loginController',
-  ['$scope', '$rootScope', '$location', 'AuthService',
-  function ($scope, $rootScope, $location, AuthService) {
+  ['$scope', '$rootScope', '$location', 'AuthService', 'httpFactory',
+  function ($scope, $rootScope, $location, AuthService, httpFactory) {
 
     // console.log(AuthService.getUserStatus(), "auth status on login page");
+
+   findUser = function(url){
+    httpFactory.getCurrentUser(url)
+    .then(function(response){
+    // console.log(response.data.message, "SUCCESS");
+    $rootScope.user = response.data.message;
+    // console.log($rootScope.user, "rootscope user")
+    });
+  };
+
+  findUser('auth/getuser');
 
     // $scope.errorMessage = "";
     $scope.loginDiv = false;
@@ -16,8 +27,8 @@ app.controller('loginController',
       $scope.choiceButtons = false;
     };
 
-    $scope.login = function () {
 
+    $scope.login = function () {
       // initial values
       $scope.error = false;
       $scope.disabled = true;
@@ -32,7 +43,7 @@ app.controller('loginController',
           //disable the button so it doesn't get clicked twice
           $scope.disabled = false;
           $scope.loginForm = {};
-
+          $scope.activeUser = true;
         })
         // handle error
         .catch(function () {

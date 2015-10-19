@@ -1,12 +1,10 @@
 *Logout button shown only if logged in??
 
 
-
 req.session.passport.user
 
 req.user should work too
 
-* Make an about page
 
 * Can there be a different heading if it's a logged in user and if there isn't?  I think yes...
 
@@ -14,3 +12,7 @@ req.user should work too
 
 
 /getuser route, search by req.user, if user, send back some info about the user, else return something like "no user logged in"
+
+*outline on hover instead of underline - or just change color
+
+
