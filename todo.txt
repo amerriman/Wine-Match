@@ -8,11 +8,14 @@ req.user should work too
 
 * Can there be a different heading if it's a logged in user and if there isn't?  I think yes...
 
-** on load make an ajax call (make an endpoint that checks to see if the user is logged in), and if the user is logged in, set the user to true (it's reset to null everytime the page refreshes)
-
-
-/getuser route, search by req.user, if user, send back some info about the user, else return something like "no user logged in"
 
 *outline on hover instead of underline - or just change color
+
+
+*change color of selected and cliked links
+
+*need to make the header and remove the transparant box
+
+
 
 

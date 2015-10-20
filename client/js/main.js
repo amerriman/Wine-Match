@@ -40,13 +40,14 @@ chooseWine = function(food) {
     wineType1 = 'Pinot+Noir';
     wineType2 = 'Merlot';
     wineType3 = 'Zinfandel';
-    } else if (food === 'pasta'){
+    } else if(food === 'pasta'){
     wineType1 = 'Sangiovese';
     wineType2 = 'Zinfandel';
     wineType3 = 'Chardonnay';
-    } else {
-      alert("You haven't chosen a food!");
     }
+    // else {
+    //   alert("You haven't chosen a food!");
+    // }
   // console.log(wineType);
   return wineType1, wineType2, wineType3, mealType;
 };

@@ -1,13 +1,13 @@
 
-app.controller('myController', ['$rootScope', '$scope', '$location', "$routeParams", function($rootScope, $scope, $location, $routeParams) {
-  console.log("HERE");
-  $scope.sortWine = "Sort";
-  $scope.currentUrl = $location.path;
+// app.controller('myController', ['$rootScope', '$scope', '$location', "$routeParams", function($rootScope, $scope, $location, $routeParams) {
+//   console.log("HERE");
+//   $scope.sortWine = "Sort";
+//   $scope.currentUrl = $location.path;
 
-  var user = $rootScope.user;
-  $scope.userName = $routeParams.user;
+//   var user = $rootScope.user;
+//   $scope.userName = $routeParams.user;
 
-}]);
+// }]);
 
 app.controller('contactController', ['$scope', function($scope){
   console.log("HERE");
@@ -226,17 +226,21 @@ app.controller('userWineController', ['$rootScope', '$scope', 'httpFactory', 'Au
   $scope.wines = [];
   $scope.recipes = [];
   $scope.userWines = [];
+  $scope.loginAlert = true
 
-     findUser = function(url){
+
+  findUser = function(url){
     httpFactory.getCurrentUser(url)
     .then(function(response){
     // console.log(response.data.message, "SUCCESS");
     $rootScope.user = response.data.message;
+    $scope.loginAlert = false;
     // console.log($rootScope.user, "rootscope user")
     });
   };
 
   findUser('auth/getuser');
+  AuthService.getUserStatus();
 
 console.log($rootScope.user, "rootScope.user in userWineController");
 

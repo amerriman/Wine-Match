@@ -81,6 +81,11 @@ ul {
   color: silver;
 }
 
+.nav-p {
+  padding-top: 16px;
+  padding-right: 12px;
+}
+
 .opening {
   padding-left: 100px;
 }

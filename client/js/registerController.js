@@ -16,7 +16,7 @@ app.controller('registerController', ['$scope', '$location', 'AuthService', func
         // handle success
         .then(function () {
            // console.log(AuthService.getUserStatus(), "getusrstatus on register - should be true if worked");
-          $location.path('/search');
+          $location.path('/');
           $scope.disabled = false;
           $scope.registerForm = {};
         })

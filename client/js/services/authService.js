@@ -27,11 +27,20 @@ app.factory('AuthService',
 //   }
 // }
 
-
+// function getUserStatus() {
+//    if(user) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+//   // return user;
+// }
 
 function getUserStatus() {
-   if(user) {
-    return true;
+   if($rootScope.user) {
+    user = true;
+    // $location.path('/search');
+    return user;
   } else {
     return false;
   }

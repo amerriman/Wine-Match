@@ -2,6 +2,10 @@
   <div class="contentContainer">
 
 
+    <div class="page-header">
+      <h1>Wine Match <br><small>Pair your meal with the perfect wine.</small></h1>
+    </div>
+
   <!-- Food selector -->
     <form class="form-inline centered selector selector-text" ng-show="selector">
       <div class="form-group">
@@ -21,32 +25,29 @@
         </select>
       </div>
         <button type="submit" ng-click="getOption()" class="btn btn-default selector-text">Search</button>
+        <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
     </form>
 
       <br>
 
       <!-- Show all wine results -->
       <div ng-show="results" class="results transparent">
-        <!-- <h3 class="results-title">Wine Match {{meal}}:</h3> -->
         <ul class="wine-grid row">
           <li class="thumbnails col-md-4 col-sm-6 " ng-repeat="wine in wines | orderBy: sortWine">
-            <div class="thumbnail-content">
-              <p class="thumbnail-wine-title"><strong>{{wine.name}}</strong></p>
-              <div class="row">
-                <!-- <div class="thumbnail-wine-pic"> -->
+            <a ng-click="wineDetails(wine.code)">
+              <div class="thumbnail-content">
+                <p class="thumbnail-wine-title"><strong>{{wine.name}}</strong></p>
+                <div class="row">
                   <img class="col-sm-5 col-xs-6 thumbnail-wine-pic" ng-src="{{wine.image}}" alt="Imagine a wine...">
-                <!-- </div> -->
-                <!-- <div class="thumbnail-wine-info"> -->
                   <p class="thumb-p col-sm-7 col-xs-6 ">
                     Vintage: {{wine.vintage}} <br>
                     Type: {{wine.varietal}} <br>
                     Price: {{wine.price | currency}}<br>
                     Rating: {{wine.snoothrank}}/5
                   </p>
-                  </div> <!-- /row -->
-                <!-- </div> -->
-                  <!-- <a ng-click="wineDetails(wine.code)" class="btn btn-warning btn-sm more-info">More Info</a> -->
-            </div>
+                </div> <!-- /row -->
+              </div>
+            </a>
           </li>
         </ul>
       </div>

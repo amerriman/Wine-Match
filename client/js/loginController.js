@@ -3,7 +3,6 @@ app.controller('loginController',
   ['$scope', '$rootScope', '$location', 'AuthService', 'httpFactory',
   function ($scope, $rootScope, $location, AuthService, httpFactory) {
 
-    // console.log(AuthService.getUserStatus(), "auth status on login page");
 
    findUser = function(url){
     httpFactory.getCurrentUser(url)
@@ -15,6 +14,7 @@ app.controller('loginController',
   };
 
   findUser('auth/getuser');
+  console.log(AuthService.getUserStatus(), "auth status on login page");
 
     // $scope.errorMessage = "";
     $scope.loginDiv = false;
@@ -38,7 +38,7 @@ app.controller('loginController',
       AuthService.login($scope.loginForm.username, $scope.loginForm.password)
         // handle success
         .then(function () {
-          $location.path('/search');
+          $location.path('/');
            // console.log(AuthService.getUserStatus(), "getusrstatus on logout - should be true here?");
           //disable the button so it doesn't get clicked twice
           $scope.disabled = false;

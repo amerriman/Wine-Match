@@ -1,29 +1,34 @@
 <div class="wineBorders">
   <div class="contentContainer">
 
+
+
     <div ng-show="results" class="results transparent">
-      <h3 class="results-title">{{user}}'s Wine Cellar</h3>
-      <ul class="wine-grid row">
-        <li class="thumbnails col-md-4" ng-repeat="wine in userWines | orderBy: sortWine">
-          <div class="thumbnail-content">
-            <p class="thumbnail-wine-title"><strong>{{wine.name}}</strong></p>
-            <div class="thumbnail-wine-pic">
-              <img ng-src="{{wine.image}}" alt="Imagine a wine..." height="100px" width="auto">
-            </div>
-            <div class="thumbnail-wine-info">
-              <p class="thumb-p">
-                Vintage: {{wine.vintage}} <br>
-                Type: {{wine.varietal}} <br>
-                Price: {{wine.price | currency}} <br>
-                <!-- Rating: {{wine.snoothrank}}/5 -->
-              </p>
-              <a ng-click="wineDetails(wine.code)" class="btn btn-warning btn-sm more-info">More Info</a>
-             <a ng-click="deleteWine(wine._id)" class="btn btn-danger btn-sm delete"><span class="glyphicon glyphicon-trash"></span></a>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
+      <!-- <h3 class="results-title">{{user}}'s Wine Cellar</h3> -->
+        <div ng-show="loginAlert" class="alert alert-danger">You must be logged in to save wine!</div>
+        <ul class="wine-grid row">
+          <li class="thumbnails col-md-4 col-sm-6 " ng-repeat="wine in userWines | orderBy: sortWine">
+            <a ng-click="wineDetails(wine.code)">
+              <div class="thumbnail-content">
+                <p class="thumbnail-wine-title"><strong>{{wine.name}}</strong></p>
+                <div class="row">
+                  <img class="col-sm-5 col-xs-6 thumbnail-wine-pic" ng-src="{{wine.image}}" alt="Imagine a wine...">
+                  <p class="thumb-p col-sm-7 col-xs-6 ">
+                    Vintage: {{wine.vintage}} <br>
+                    Type: {{wine.varietal}} <br>
+                    Price: {{wine.price | currency}}<br>
+                    Rating: {{wine.snoothrank}}/5
+                  </p>
+                 <a ng-click="deleteWine(wine._id)" class="btn btn-danger btn-sm delete"><span class="glyphicon glyphicon-trash"></span></a>
+
+                </div> <!-- /row -->
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+
 
 
         <div ng-show="single">
