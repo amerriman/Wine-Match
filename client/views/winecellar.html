@@ -9,14 +9,13 @@
           <li class="thumbnails col-md-4 col-sm-6 " ng-repeat="wine in userWines | orderBy: sortWine">
             <a ng-click="wineDetails(wine.code)">
               <div class="thumbnail-content">
-                <p class="thumbnail-wine-title"><strong>{{wine.name}}</strong></p>
+                <p class="thumbnail-wine-title results-a"><strong>{{wine.name}}</strong></p>
                 <div class="row">
                   <img class="col-sm-5 col-xs-6 thumbnail-wine-pic" ng-src="{{wine.image}}" alt="Imagine a wine...">
-                  <p class="thumb-p col-sm-7 col-xs-6 ">
+                  <p class="thumb-p col-sm-7 col-xs-6 results-a">
                     Vintage: {{wine.vintage}} <br>
                     Type: {{wine.varietal}} <br>
-                    Price: {{wine.price | currency}}<br>
-                    Rating: {{wine.snoothrank}}/5
+                    Price: {{wine.price | currency}}
                   </p>
                  <a ng-click="deleteWine(wine._id)" class="btn btn-danger btn-sm delete"><span class="glyphicon glyphicon-trash"></span></a>
 
