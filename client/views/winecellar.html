@@ -4,7 +4,6 @@
 
 
     <div ng-show="results" class="results transparent">
-      <!-- <h3 class="results-title">{{user}}'s Wine Cellar</h3> -->
         <div ng-show="loginAlert" class="alert alert-danger">You must be logged in to save wine!</div>
         <ul class="wine-grid row">
           <li class="thumbnails col-md-4 col-sm-6 " ng-repeat="wine in userWines | orderBy: sortWine">

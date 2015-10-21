@@ -1,7 +1,7 @@
 <div class="mainBorders">
   <div class="contentContainer">
 
-
+  <!-- <div class="header"> -->
     <div class="page-header">
       <h1>Wine Match <br><small>Pair your meal with the perfect wine.</small></h1>
     </div>
@@ -24,22 +24,27 @@
           <option class="food-choice selector-text" value="pasta">Pasta</option>
         </select>
       </div>
-        <button type="submit" ng-click="getOption()" class="btn btn-default selector-text">Search</button>
+        <!-- <a href="#results"> -->
+          <button type="submit" ng-click="getOption()" class="btn btn-default selector-text">Search</button>
+        <!-- </a> -->
         <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
     </form>
+    <!-- </div> -->
 
+      <br>
       <br>
 
       <!-- Show all wine results -->
+      <a name="results">
       <div ng-show="results" class="results transparent">
         <ul class="wine-grid row">
           <li class="thumbnails col-md-4 col-sm-6 " ng-repeat="wine in wines | orderBy: sortWine">
-            <a ng-click="wineDetails(wine.code)">
+            <a ng-click="wineDetails(wine.code)" href="">
               <div class="thumbnail-content">
-                <p class="thumbnail-wine-title"><strong>{{wine.name}}</strong></p>
+                <p class="thumbnail-wine-title results-a"><strong>{{wine.name}}</strong></p>
                 <div class="row">
                   <img class="col-sm-5 col-xs-6 thumbnail-wine-pic" ng-src="{{wine.image}}" alt="Imagine a wine...">
-                  <p class="thumb-p col-sm-7 col-xs-6 ">
+                  <p class="thumb-p col-sm-7 col-xs-6 results-a">
                     Vintage: {{wine.vintage}} <br>
                     Type: {{wine.varietal}} <br>
                     Price: {{wine.price | currency}}<br>
@@ -51,6 +56,7 @@
           </li>
         </ul>
       </div>
+      </a>
 
       <!-- Show single wine more info -->
 
@@ -65,7 +71,7 @@
             <div class="col col-md-5">
               <img ng-src="{{singleWine.image}}" alt="Wine Image"  class="single-wine-image">
             </div>
-            <div class="col col-md-7 single-wine-p">
+            <div class="col col-md-6 single-wine-p">
             <h4><strong>Winery:</strong> {{singleWine.winery}}</h4>
               <h4><strong>Varietal:</strong> {{singleWine.varietal}}</h4>
               <h4><strong>Vintage:</strong> {{singleWine.vintage}}</h4>
