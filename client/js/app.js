@@ -4,11 +4,6 @@ var app = angular.module('myApp', ['ngRoute']);
 app.config(function($routeProvider) {
 
   $routeProvider
-    // .when('/', {
-    //   templateUrl: 'views/login.html',
-    //   controller: 'loginController',
-    //   access: {restricted: false}
-    // })
     .when('/', {
       templateUrl: '../views/search.html',
       controller: 'allWineController',
@@ -28,11 +23,6 @@ app.config(function($routeProvider) {
       controller: 'registerController',
       access: {restricted: false}
     })
-    // .when('/results', {
-    //   templateUrl: '../views/results.html',
-    //   controller: 'allWineController',
-    //   access: {restricted: false}
-    // })
     .when('/winecellar', {
       templateUrl: '../views/winecellar.html',
       controller: 'userWineController',
@@ -46,8 +36,6 @@ app.config(function($routeProvider) {
     .otherwise( {
       redirectTo: '/'
     });
-
-
 });
 
 
@@ -66,19 +54,13 @@ app.config(function($routeProvider) {
 //Checks to see if the user is logged in.  Need to add logic to show which routes are protected by this.
 app.run(function ($rootScope, $location, $route, AuthService) {
   $rootScope.$on('$routeChangeStart', function (event, next, current) {
-    console.log($rootScope.user, "rootScope user in control route function")
+    // console.log($rootScope.user, "rootScope user in control route function")
     if (next.access.restricted && !$rootScope.user) {
       $location.path('/login');
     }
   });
 });
 
-
-// app.run(function($rootScope){
-//   $rootScope.$on('$stateChangeSuccess',function(event, toState, toParams, fromState, fromParams){
-//     $rootScope.containerClass = toState.containerClass;
-//   });
-// });
 
 
 

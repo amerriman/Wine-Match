@@ -20,7 +20,6 @@ router.get('/users', function(req, res, next){
 router.get('/user/:id', function(req, res, next){
   query = {username: req.user.username};
   User.findOne(query, function(err, data){
-    console.log(query, "Query in get one");
     if(err){
       res.json({'message': err});
     } else {
@@ -107,10 +106,8 @@ router.put('/users', function(req, res, next){
   var options = {new: true};
   User.findOneAndUpdate(query, update, options, function(err, data){
     if(err){
-      console.log("Something's fucked up");
       res.json({'message': err});
     } else {
-      console.log("Holy shit...it WORKED!");
       res.json({'UPDATED' : data});
     }
   });
@@ -159,8 +156,6 @@ router.put('/users/:name/:id', function(req, res) {
 console.log(req, 'REQ');
   var query = {"username": req.params.name};
   var id = req.params.id;
-  console.log(query, "Query");
-  console.log(id, 'id');
   var options = {new: true};
   User.findOneAndUpdate(query,
     {$pull: {
@@ -169,12 +164,10 @@ console.log(req, 'REQ');
   }, options, function(err, data){
 
     if(err){
-      console.log(err, "ERR")
-      console.log("Something's fucked up");
+      // console.log(err, "ERR")
       res.json({'message': err});
     } else {
-      console.log(data, "DATA");
-      console.log("Holy shit...it WORKED!");
+      // console.log(data, "DATA");
       res.json({"SUCCESS": data});
     }
   });
@@ -194,7 +187,7 @@ router.delete('/user/:id', function(req, res, next){
 });
 
 
-//helper function
+//helper function - todo
 function createOptions(inputFields){
 
 }

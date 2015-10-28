@@ -14,8 +14,7 @@ app.controller('loginController',
   };
 
   findUser('auth/getuser');
-  console.log(AuthService.getUserStatus(), "auth status on login page");
-
+  // console.log(AuthService.getUserStatus(), "auth status on login page");
     // $scope.errorMessage = "";
     $scope.loginDiv = false;
     $scope.choiceButtons = true;

@@ -8,7 +8,6 @@ req.user should work too
 
 * Can there be a different heading if it's a logged in user and if there isn't?  I think yes...
 
-
 *outline on hover instead of underline - or just change color
 
 

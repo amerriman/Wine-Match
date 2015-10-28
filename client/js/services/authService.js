@@ -18,7 +18,6 @@ app.factory('AuthService',
     });
 
 
-//Maybe can return username here and call this function elsewhere in the controllers to get the current user?
 // function isLoggedIn() {
 //   if(user) {
 //     return true;
@@ -80,7 +79,7 @@ function login(username, password) {
 
 }
 
-
+//Will use later
 // function githubLogin(username, password) {
 
 //   // create a new instance of deferred
