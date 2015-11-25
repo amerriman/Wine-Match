@@ -94,6 +94,7 @@ app.controller('allWineController', ['$rootScope', '$scope', "httpFactory", "$ti
 
 //Make API call to get details about a specific wine - including pushing recipes into an array
   $scope.wineDetails = function(code) {
+    $scope.recipes = []
       httpFactory.getOneWine(code)
     .then(function(response){
       $scope.singleWine = response.data.wines[0];
